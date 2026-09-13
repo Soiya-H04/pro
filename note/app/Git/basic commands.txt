@@ -1,0 +1,122 @@
+初始化：
+git init
+初始化目录
+
+
+查看工作区：
+git status
+当前仓库状态
+git status --short
+当前仓库状态（简单）
+git diff
+修改区与暂存区改变
+git diff --staged
+暂存区于提交区改变
+
+
+添加：
+git add *
+所有未跟踪或已修改文件
+git add <filename1> <filename2>
+指定文件
+
+
+提交：
+git commit
+当前暂存区文件，打开编辑器编写提交信息
+git commit -m "commit message"
+当前暂存区文件，并添加提交信息
+git commit --amend -m "message"
+修改最近提交，并添加信息
+
+
+移动：
+git mv <source> <destination>
+将文件从 source 移动到 destination
+source 与 destination 无目录转换时为重命名
+
+
+移除：
+git rm <filename>
+指定未修改文件，需要提交移除（目录里会删除文件）
+目录先删除，需要在 git 也进行移除
+git rm -f <filename>
+指定文件（未修改、暂存、修改），需要提交移除（目录里会删除文件）
+目录先删除，需要在 git 也进行移除
+git rm <filename> --cached
+指定文件（未修改、暂存、修改），需要提交移除（目录里不会删除文件）
+
+
+撤销：
+git reset HEAD -- <filename>
+暂存文件，文件为修改状态（无二次修改）
+git checkout -- <filename>
+已修改文件，文件为上次提交状态
+
+
+查看日志：
+git log
+提交历史（提交者、时间、校验码、提交信息），q 退出
+git log --patch 
+提交历史（提交者、时间、校验码、提交信息、提交补丁），q 退出
+git log --stat
+提交历史（提交者、时间、校验码、提交信息、统计提交补丁），q 退出
+git log -n
+n 条提交历史（提交者、时间、校验码、提交信息）
+git log --oneline
+单行提交信息（提交者、时间、校验码、提交信息、统计提交补丁）
+git log  --after="1999-12-11" --before="2001-12-02."
+after 时间之后，before 之前时间的提交信息
+git log -S "keyword"
+修改内容包含 keyword 的提交信息
+git log --author="author"
+作者为 author 的提交信息
+
+
+配置远程仓库：
+git remote add <alias> <url>
+添加 http 协议为 url 的远程仓库，并命名为 alias
+git remote
+查看远程仓库
+git remote -v
+查看远程仓库与 url
+git remote rename <oldname> <newname>
+给远程仓库改名为 newname
+git remote rm <remote>
+删除远程仓库
+
+
+使用远程仓库：
+git fetch <remote> <branch>
+拉取远程仓库分支数据
+git pull <remote> <branch>
+拉取并合并远程仓库分支数据
+git push <remote> <branch>
+推送数据给远程仓库分支
+git clone <url> -o <alias>
+克隆仓库并重命名
+
+
+使用标签：
+git tag
+查看已有标签
+git tag -l "tagnamespecial"
+查看特定的标签
+git show <tagname>
+查看标签对应提交历史信息
+git tag -a <tagname> 
+为上一次提交添加附注标签，并打开编辑器输入添加信息
+git tag -a <tagname>  -m "添加信息"
+为上一次提交添加附注标签，并添加信息
+git tag <tagname>
+为上一次提交添加轻量信息
+git tag -a <tagname> <校验和>
+为校验和的对应历史提交添加附注标签，并打开编辑器输入添加信息
+git tag -a <tagname> <校验和> -m "添加信息" 
+为校验和的对应历史提交添加附注标签并添加信息
+git push <remote> <tagname>
+提交指定标签到远程仓库
+git push <remote> --tags
+提交所有标签到远程仓库
+git tag -d <tagname>
+删除指定标签

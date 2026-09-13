@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类选择器</title>
+    <style>
+        .divsize {
+            width: 200px;
+            height: 100px;
+            border: none;
+        }
+        .divred {
+            background-color: red;
+        }
+        .divgreen {
+            background-color: green;
+        }
+        .fontblack {
+            color: black;
+        }
+        .fontbule {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <!-- 多类 -->
+    <div class="divsize divred">
+        <!-- 单类 -->
+        <p class = "fontblack">这是红 div 里的文字</p>
+        <p class = "fontblack">这是红 div 里的文字</p>
+        <p class = "fontblack">这是红 div 里的文字</p>
+    </div>
+    <div class="divsize divgreen">
+        <p class="fontbule">这是绿 div 里的文字</p>
+        <p class="fontbule">这是绿 div 里的文字</p>
+        <p class="fontbule">这是绿 div 里的文字</p>
+    </div>
+    <div class="divsize divred">
+        <!-- 单类 -->
+        <p class = "fontbule">这是红 div 里的文字</p>
+        <p class = "fontbule">这是红 div 里的文字</p>
+        <p class = "fontbule">这是红 div 里的文字</p>
+    </div>
+</body>
+</html>

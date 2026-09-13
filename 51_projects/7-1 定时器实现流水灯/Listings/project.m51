@@ -1,0 +1,226 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/25/2025  02:20:11  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\BAIDUNETDISKDOWNLOAD\C51KAIFA\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\Timer0.obj, .\Objects\chg_mod.obj, .\Obj
+>> ects\Delay.obj TO .\Objects\project PRINT (.\Listings\project.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  .\Objects\Timer0.obj (TIMER0)
+  .\Objects\chg_mod.obj (CHG_MOD)
+  .\Objects\Delay.obj (DELAY)
+  D:\BAIDUNETDISKDOWNLOAD\C51KAIFA\C51\LIB\C51S.LIB (?C_STARTUP)
+  D:\BAIDUNETDISKDOWNLOAD\C51KAIFA\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\project (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         ?DT?MAIN
+            DATA    000BH     0001H     UNIT         ?DT?CHG_MOD
+            IDATA   000CH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+                    000EH     07F2H                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     0064H     UNIT         ?PR?TIMER0_ROUTINE?MAIN
+            CODE    08F0H     0048H     UNIT         ?PR?CHANGE_MOD?CHG_MOD
+            CODE    0938H     0017H     UNIT         ?PR?TIMER0_INIT?TIMER0
+            CODE    094FH     0014H     UNIT         ?PR?_DELAY?DELAY
+            CODE    0963H     0010H     UNIT         ?PR?MAIN?MAIN
+            CODE    0973H     000BH     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\project (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN
+  +--> ?PR?TIMER0_INIT?TIMER0
+  +--> ?PR?CHANGE_MOD?CHG_MOD
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/25/2025  02:20:11  PAGE 2
+
+
+?PR?CHANGE_MOD?CHG_MOD
+  +--> ?PR?_DELAY?DELAY
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\project (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:088CH         PUBLIC        Timer0_Routine
+  D:00A0H         PUBLIC        P2
+  B:00A0H.0       PUBLIC        P2_0
+  B:00A0H.1       PUBLIC        P2_1
+  B:00A0H.2       PUBLIC        P2_2
+  B:00A0H.7       PUBLIC        P2_7
+  C:0963H         PUBLIC        main
+  D:000AH         PUBLIC        mode
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  -------         PROC          MAIN
+  C:0963H         LINE#         7
+  C:0963H         LINE#         8
+  C:0963H         LINE#         10
+  C:0966H         LINE#         11
+  C:0968H         LINE#         12
+  C:096AH         LINE#         13
+  C:096CH         LINE#         14
+  C:096CH         LINE#         15
+  C:096CH         LINE#         16
+  C:0971H         LINE#         17
+  -------         ENDPROC       MAIN
+  -------         PROC          TIMER0_ROUTINE
+  -------         DO            
+  D:0008H         SYMBOL        T0Count
+  -------         ENDDO         
+  C:088CH         LINE#         23
+  C:0890H         LINE#         26
+  C:0893H         LINE#         27
+  C:0896H         LINE#         28
+  C:089EH         LINE#         29
+  C:08A7H         LINE#         30
+  C:08A7H         LINE#         31
+  C:08ADH         LINE#         32
+  C:08B2H         LINE#         33
+  C:08B2H         LINE#         34
+  C:08BBH         LINE#         35
+  C:08BBH         LINE#         36
+  C:08BDH         LINE#         37
+  C:08BFH         LINE#         38
+  C:08C1H         LINE#         40
+  C:08C1H         LINE#         41
+  C:08C3H         LINE#         42
+  C:08C3H         LINE#         43
+  C:08C5H         LINE#         44
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/25/2025  02:20:11  PAGE 3
+
+
+  C:08CAH         LINE#         45
+  C:08CAH         LINE#         46
+  C:08CDH         LINE#         47
+  C:08CFH         LINE#         48
+  C:08D1H         LINE#         49
+  C:08D3H         LINE#         50
+  C:08D5H         LINE#         51
+  C:08DAH         LINE#         52
+  C:08DAH         LINE#         53
+  C:08E3H         LINE#         54
+  C:08E3H         LINE#         55
+  C:08E5H         LINE#         56
+  C:08E7H         LINE#         57
+  C:08E9H         LINE#         59
+  C:08E9H         LINE#         60
+  C:08EBH         LINE#         61
+  C:08EBH         LINE#         62
+  C:08EBH         LINE#         64
+  C:08EBH         LINE#         66
+  -------         ENDPROC       TIMER0_ROUTINE
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        TIMER0
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  B:00A8H.7       PUBLIC        EA
+  C:0938H         PUBLIC        Timer0_Init
+  D:0089H         PUBLIC        TMOD
+  B:00A8H.1       PUBLIC        ET0
+  B:0088H.5       PUBLIC        TF0
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:00B8H.1       PUBLIC        PT0
+  B:0088H.4       PUBLIC        TR0
+  -------         PROC          TIMER0_INIT
+  C:0938H         LINE#         3
+  C:0938H         LINE#         4
+  C:0938H         LINE#         5
+  C:093BH         LINE#         6
+  C:093EH         LINE#         7
+  C:0940H         LINE#         8
+  C:0942H         LINE#         10
+  C:0945H         LINE#         11
+  C:0948H         LINE#         12
+  C:094AH         LINE#         13
+  C:094CH         LINE#         14
+  C:094EH         LINE#         15
+  -------         ENDPROC       TIMER0_INIT
+  -------         ENDMOD        TIMER0
+
+  -------         MODULE        CHG_MOD
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:08F0H         PUBLIC        change_mod
+  B:00B0H.0       PUBLIC        P3_0
+  B:00B0H.1       PUBLIC        P3_1
+  B:00B0H.2       PUBLIC        P3_2
+  -------         PROC          CHANGE_MOD
+  -------         DO            
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/25/2025  02:20:11  PAGE 4
+
+
+  D:000BH         SYMBOL        mode
+  -------         ENDDO         
+  C:08F0H         LINE#         5
+  C:08F0H         LINE#         6
+  C:08F0H         LINE#         8
+  C:0907H         LINE#         9
+  C:091EH         LINE#         10
+  C:0935H         LINE#         11
+  C:0937H         LINE#         12
+  -------         ENDPROC       CHANGE_MOD
+  -------         ENDMOD        CHG_MOD
+
+  -------         MODULE        DELAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:094FH         PUBLIC        _Delay
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0005H         SYMBOL        i
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:094FH         LINE#         2
+  C:094FH         LINE#         3
+  C:094FH         LINE#         5
+  C:0953H         LINE#         6
+  C:0953H         LINE#         8
+  C:0955H         LINE#         9
+  C:0957H         LINE#         11
+  C:0957H         LINE#         12
+  C:0959H         LINE#         13
+  C:095BH         LINE#         14
+  C:0960H         LINE#         15
+  C:0962H         LINE#         17
+  -------         ENDPROC       _DELAY
+  -------         ENDMOD        DELAY
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00F4H BYTE (11%) *
+******************************************************************************
+
+Program Size: data=13.0 xdata=0 code=388
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

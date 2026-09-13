@@ -1,0 +1,196 @@
+{
+  "main": {
+    "id": "bd21448965f02bd8",
+    "type": "split",
+    "children": [
+      {
+        "id": "72fab990377962e7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9169d0ac5ed66366",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "新标签页"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "adc0d8c8b3f61c21",
+    "type": "split",
+    "children": [
+      {
+        "id": "100a6cf962e15f85",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4c214703080a02fe",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "755c8df7f4f9705a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "57bead29e4c8e66c",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "254e69fcbee232d2",
+    "type": "split",
+    "children": [
+      {
+        "id": "c5e3909d1c5ab2a1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f951c521f10cd8eb",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "反向链接"
+            }
+          },
+          {
+            "id": "25021070e92cbeeb",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "出链"
+            }
+          },
+          {
+            "id": "d5109adbadb88299",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "fb2447095d356cb4",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "大纲"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:创建新数据库": false
+    }
+  },
+  "active": "4c214703080a02fe",
+  "lastOpenFiles": [
+    "codes/测试 Tarjan/ceshi.m",
+    "codes/测试 Tarjan/untitled.m",
+    "codes/测试 Tarjan/performance_test.m",
+    "codes/测试 Tarjan/main_example.m",
+    "codes/测试 Tarjan/plot_graph_with_sccs.m",
+    "codes/测试 Tarjan/test_tarjan.m",
+    "codes/测试 Tarjan/tarjan_algorithm.m",
+    "codes/测试 Tarjan",
+    "codes/New Folder",
+    "分层逻辑.md",
+    "凝聚有向图.md",
+    "网络攻击.md",
+    "codes/main_stuct.m",
+    "codes/Phi.m",
+    "正定矩阵.md",
+    "Kronecker product.md",
+    "TS（Takagi-Sugeno）模糊模型.md",
+    "图/模糊集说明.png",
+    "图/模糊集定义.png",
+    "图/正定判断_2.png",
+    "图/正定判断.png",
+    "图/正定矩阵定义.png",
+    "图/Kronecker_性质.png",
+    "图/Kronecker_性质_1.png",
+    "图/Kronecker_性质_2.png",
+    "图/Kronecker product.png",
+    "李雅普诺夫理论.md",
+    "未命名思维导图.md"
+  ]
+}

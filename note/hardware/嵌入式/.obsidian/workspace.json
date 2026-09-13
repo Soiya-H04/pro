@@ -1,0 +1,174 @@
+{
+  "main": {
+    "id": "47283a0470e96428",
+    "type": "split",
+    "children": [
+      {
+        "id": "0ef0956c13f4dfec",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "75c78d529bf00453",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "弱强上下拉.png"
+              },
+              "icon": "lucide-image",
+              "title": "弱强上下拉"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "caf1acd438431e72",
+    "type": "split",
+    "children": [
+      {
+        "id": "b7120d35e19ca341",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d21596762231001f",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "e0cdefeb85576420",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "99ad3dee3bba7a24",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "9cb77e368a197aea",
+    "type": "split",
+    "children": [
+      {
+        "id": "e37f6907b75d3ab2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7fa744f020ab077e",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Pasted image 20250805021500.png",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Pasted image 20250805021500 的反向链接列表"
+            }
+          },
+          {
+            "id": "cb69558dd3d0da0a",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Pasted image 20250805021500.png",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Pasted image 20250805021500 的出链列表"
+            }
+          },
+          {
+            "id": "aa2026b3e1412485",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "46643d0230466424",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Pasted image 20250805021500.png",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Pasted image 20250805021500 的大纲"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "75c78d529bf00453",
+  "lastOpenFiles": [
+    "弱强上下拉.md",
+    "Pasted image 20250805021500.png"
+  ]
+}

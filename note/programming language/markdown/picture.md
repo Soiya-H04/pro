@@ -1,0 +1,6 @@
+![图片](https://markdown.com.cn)
+![图片加title](https://markdown.com.cn "title")
+![[网页图片 | 100x100]](https://markdown.com.cn)
+![[网页图片 | 100]](https://markdown.com.cn)
+![[本地图片]](https://markdown.com.cn | 100x100)
+![[本地图片]](https://markdown.com.cn | 100)

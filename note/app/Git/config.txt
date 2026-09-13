@@ -1,0 +1,45 @@
+域：
+git config --system
+通用
+git config --global
+当前用户
+git config --local
+当前仓库
+
+
+查看（q 退出）：
+git config --list
+配置
+git config --list --show-origin
+配置与位置
+
+
+配置：
+core.autocrlf=true
+自动转换行尾符为 CRLF
+core.symlinks=false
+禁用符号链接
+pull.rebase=false
+拉取时使用合并而非变基
+credential.helper=manager
+使用凭证管理器存储密码
+init.defaultbranch=master
+默认分支名为 master
+user.email=3476054544@qq.com
+邮箱地址
+user.name=Soiya
+用户名
+core.excludesfile=C:/Users/smart dogs/git.ignore
+指定全局忽略文件路径
+core.editor="D:\Download\Notepad++\Notepad++ v7.7(64bit)\notepad++.exe" -multiInst -notabbar -nosession -noPlugin
+默认编辑器
+core.filemode=false
+忽略文件权限变化
+core.bare=false
+设置为非裸仓库
+core.logallrefupdates=true
+记录所有引用更新
+
+
+配置别名：
+git config --global alias.<alias_name> <origin_command>

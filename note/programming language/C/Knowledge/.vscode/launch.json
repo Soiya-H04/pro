@@ -1,0 +1,64 @@
+{
+    "version":"0.2.0",
+
+    "configurations": [
+        {
+            "name": "Debug-multiple-C-files",
+            "type": "cppdbg",
+            "request": "launch",
+            "externalConsole": true,
+            "internalConsoleOptions": "neverOpen",
+            "stopAtEntry": true,
+            "logging": {
+                "exceptions": true,
+                "moduleLoad": true,
+                "programOutput": true
+            },
+            "program": "${fileDirname}\\${fileDirnameBasename}(Debug).exe",
+            "cwd": "${fileDirname}",
+            "args": [],
+            "environment": [],
+
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:\\Program Files\\mingw64\\bin\\gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "漂亮打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures":true
+                }
+            ],
+
+            "preLaunchTask": "Compile multiple C files(Debug)"
+        },
+        {
+            "name": "Debug-single-C-file",
+            "type": "cppdbg",
+            "request": "launch",
+            "externalConsole": false,
+            "stopAtEntry": true,
+            "logging": {
+                "exceptions": true,
+                "moduleLoad": true,
+                "programOutput": true
+            },
+
+            "program": "${fileDirname}\\${fileBasenameNoExtension}(Debug).exe",
+            "cwd": "${fileDirname}",
+            "args": [],
+            "environment": [],
+
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:\\Program Files\\mingw64\\bin\\gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "漂亮打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures":true
+                }
+            ],      
+            
+            "preLaunchTask": "Compile single C file(Debug)"
+        }
+    ]
+}

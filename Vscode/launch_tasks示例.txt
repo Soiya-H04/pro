@@ -1,0 +1,74 @@
+tasks.json
+{
+    "version": "2.0.0",
+
+    "tasks": [
+        {
+            "label": "task 1",
+            "type": "shell",
+            "command":"D:\\Program Files\\MSYS2\\mingw64\\bin\\gcc.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}",
+            },
+            "problemMatcher":"$gcc",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "dependsOn":["label 1","label 2"],
+            "dependsOrder": "sequence",
+
+            "detail": "哈哈"
+        }
+    ]
+}
+
+launch.json
+{
+    "version": "0.2.0",
+
+    "configurations": [
+        {
+            "name": "调试器 1",
+            "type": "cppdbg",
+            "request": "launch",
+            "externalConsole": true,
+            "stopAtEntry": true,
+            "logging": {
+                "exceptions": true
+            },
+
+            "program": "${fileDirname}.exe",
+            "cwd": "${fileDirname}",
+            "args": [],
+            "environment": [],
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:\\Program Files\\mingw64\\bin\\gdb.exe",
+
+            "setupCommands": [
+                {
+                    "description": "命令 1",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+
+            "preLaunchTask": ""
+        }
+    ]
+}

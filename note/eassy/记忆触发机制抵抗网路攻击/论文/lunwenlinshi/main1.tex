@@ -1,0 +1,185 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{ctex}
+\title{lunwenlinshi}
+\author{Q m}
+\date{October 2025}
+
+\begin{document}
+
+\maketitle
+\section{Introduction}
+\section{Problem Formulation}
+In this article, 对于复杂网络中的单个节点且该节点不受复杂网络中其他节点的影响，the following nonlinear physical plant described by the T–S fuzzy-model will be considered as follows.\
+
+Plant rule $i$: IF $\varphi_1(t)$ is $G_{i1}$, $\ldots$, and $\varphi_q(t)$ is $G_{iq}$, THEN
+\begin{equation}
+\dot{x}(t) = (A_i + \Delta A_i(t))x(t) + B_i u(t)
+\end{equation}
+for $i \in \mathcal{I} \triangleq \{1, 2, \ldots, r\}$, where $i$ means the $i$th fuzzy rule, $\varphi_j(t)$ and $G_{ij}$ for $i \in \mathcal{I}$, $j \in \{1, 2, \ldots, q\}$ denote the $j$th premise variable and fuzzy set, respectively. $x(t) \in \mathbb{R}^n$ and $u(t) \in \mathbb{R}^{n_u}$ are the state and the control input vector, respectively. $A_i$ and $B_i$ are known matrices with appropriate dimensions. In addition, $\Delta A_i(t) = \alpha(t)A_{0i}$ denotes the random uncertainty of the system. $\alpha(t)$ is a random variable with $\mathbb{E}(\alpha(t)) = \bar{\alpha}$ and $\mathrm{Var}(\alpha(t)) = \hat{\alpha}^2$. $A_{0i}$ is a constant matrix that reflects the nominal uncertainty.\
+
+\textbf{Remark 1:} The parameter uncertainty is often induced by some unknown disturbance in practices. The amplitude of this kind of uncertainty is governed by a random distribution like the one in (1).
+
+Define $\varphi(t) = [\varphi_1(t), \ldots, \varphi_q(t)]$ and $g_i(\varphi(t)) = \Pi_{j=1}^{q} G_{ij}(\varphi_j(t))$, we can obtain the membership function $\mu_i(\varphi(t))$ as
+
+\begin{equation}
+\mu_i(\varphi(t)) = \frac{g_i(\varphi(t))}{\sum_{i=1}^{r} g_i(\varphi(t))}. 
+\end{equation}
+
+It is known that $0 \leq \mu_i(\varphi(t)) \leq 1$ and $\sum_{i=1}^{r} \mu_i(\varphi(t)) = 1$.
+
+With the aid of center-average defuzzifier, product interference, and singleton fuzzifier, the whole T--S fuzzy systems can be written by
+
+\begin{equation}
+\dot{x}(t) = \sum_{i=1}^{r} \mu_i(\varphi(t))[(A_i + \alpha(t)A_{0i})x(t) + B_i u(t)]. 
+\end{equation}
+
+
+Suppose the control signal is transmitted over the communication network at instant $t_k$, and $\{t_k\}_{k=0}^{\infty}$ is a monotone increasing sequence. Then, the T--S fuzzy-based feedback control law of the $j$th ($j \in \mathcal{I}$) rule can be expressed by
+
+\text{Control rule $j$: IF $\varphi_1(t_k)$ is $G_{i1}$, $\ldots$, and $\varphi_q(t_k)$ is $G_{iq}$, THEN}
+
+\begin{equation}
+\bar{u}(t) = K_j x(t_k)
+\end{equation}
+
+for $t \in [t_k, t_{k+1})$, where $K_j$ is the controller gain to be designed. Using a similar method, we can get the overall fuzzy controller as
+
+\begin{equation}
+\bar{u}(t) = \sum_{j=1}^{r} \mu_j(\varphi(t_k)) K_j x(t_k). 
+\end{equation}
+
+Similar to [26], we assume the membership function has the following property:
+
+\begin{equation}
+\mu_j(\varphi(t_k)) > \rho_j \mu_j(\varphi(t))
+\end{equation}
+
+for $t \in [t_k, t_{k+1})$, where $\rho_j > 0$ is a known constant.
+
+The control signal is vulnerable to tampering by malicious adversaries when it transmits over a communication network. In this study, we suppose the adversaries inject false data into the control information with the following form:
+
+\begin{equation}
+u(t) = \bar{u}(t) + \bar{u}_a(t)
+\end{equation}
+
+where $\bar{u}_a(t) = \beta(t) u_a(t)$ and $\beta(t) \in \{0, 1\}$ are a random variable with $\mathbb{E}\{\beta(t) = 1\} = \bar{\beta}$, $u_a(t)$ is the attack signal that satisfies
+\begin{equation}
+\|u_a(t)\| \leq \varrho^2
+\end{equation}
+
+where $\varrho > 0$ is a predefined constant.
+
+\textbf{Remark 2:} For the purpose of evading detection, the adversaries usually launch the attack intermittently, here $\beta(t)$ taking ``1'' means a successful attack at instant $t$. Besides, the magnitude of the attack is constrained as well.
+
+Combining (3) and (7), we can obtain the closed-loop control system for $t \in [t_k, t_{k+1})$ as follows:
+
+\begin{equation}
+\begin{aligned}
+\dot{x}(t) &= \sum_{i=1}^{r} \sum_{j=1}^{r} \mu_i(\varphi(t)) \mu_j(\varphi(t_k)) 
+\big[ (A_i + \alpha(t)A_{0i})x(t) \right. \\
+& + B_i K_j x(t_k) + \beta(t) B_i u_a(t_k) \big].
+\end{aligned}
+\end{equation}
+\section{引入多层网络}
+在前一部分中，我们研究的是单个不受复杂网络中其他节点影响的单个节点的动态方程，现在我们将焦点转移到由多个节点互联组成的非强联通复杂随机网络模型。事实上，我们可以使用著名的tarjan算法用来找到有向图的所有强连通分支。如果有向图$(G,A(t))$不是强连通的，我们详细介绍了它的一种分层方法：
+1、首先，对于一个有向图$(G,A(t))$，我们假设把它的每个强连通分支压缩到一个节点上，从而得到一个凝聚有向图A 。
+2、然后，对于凝聚有向图A，我们将所有入度为零的节点放在第一层。
+3、进一步，我们说节点D属于第k个( k$\ge$2)层当且仅当它满足以下条件。
+- 有一个节点C属于( k-1)层，且满足C≺D。
+- 如果存在一个节点B，使得B≺D，则节点B所属层的序号不会超过k - 1。
+4、最后，当凝聚有向图A中的所有节点都对应到某一层时，分层工作就完成了。
+
+为了更好地理解SCNWSC的层次化方法，给出了以下图表。在这里，图2展示了一个具有20个节点的SCNWSC，图3展示了一个分层网络，其中绿色层代表第一层，蓝色层代表第二层，灰色层代表第三层。
+
+因为根据上述分层方法进行分层后，第一层的节点入度为 0，即没有受到其他层的影响，当第一层达到指数同步时，根据渐进自治系统理论可知，第二层可使用类似第一层的方法进行分析，所以我们可以提取第一层进行单独研究。
+
+我们定义$x_p(t)$，其中 $p\in \mathcal{P}\triangleq\{1,2,3,\cdots,o\}$ 为第一层的第 $p$ 个节点的当前状态，定义总耦合输入$R_{m}$ 表示第 m 个节点的状态 $x_m(t)$ 受到相关节点影响总和如下
+$$
+R_m = \sum_{n=0}^{o}{r_{nm}x_n(t)}
+$$
+其中，$r_{nm}$ 代表节点 $n$ 对节点 $m$ 的状态耦合系数，为待设计的常数。结合9和10 我们得到复杂网络下的单个节点 $m$ 的闭环控制系统如下
+
+\begin{equation}
+\begin{aligned}
+\dot{x}_m(t) &= \sum_{i=1}^{r} \sum_{j=1}^{r} \mu_i(\varphi(t)) \mu_j(\varphi(t_k)) 
+\big[ (A_i + \alpha(t)A_{0i})x_q(t) \right. \\
+& \quad \left.+ B_i K_j x(t_k) + \beta(t) B_i u_a(t_k) \big]+R_m\\
+&=\sum_{i=1}^{r} \sum_{j=1}^{r} \sum_{n=1}^{o}\mu_i(\varphi(t)) \mu_j(\varphi(t_k)) 
+\big[ (A_i + \alpha(t)A_{0i})x_q(t) \right.\\
+&\quad \left.+r_{nm}x_{n}(t)+ B_i K_j x(t_k) + \beta(t) B_i u_a(t_k) \big].
+\end{aligned}
+\end{equation}
+
+To alleviate the burden of the network bandwidth, Event-Triggered Mechanism (ETM) is adopted in most literature, such as in \cite{14,27,28}. However, the signal discretized by a sampler will lose some useful information that exists between adjacent sampling instants. Therefore, the conservativeness will be decreased if the designed ETM can utilize continuous signals from the physical process that is assumed to be conveniently available. This transmission mechanism is called the continuous type ETM. Notice that this type ETM often engenders Zeno phenomena. Motivated by \cite{17}, we divide the releasing interval $[t_k, t_{k+1})$ into two subintervals: $\mathcal{I}_1 \triangleq [t_k, t_k + h_1) \quad \text{and} \quad \mathcal{I}_2 \triangleq [t_k + h_1, t_{k+1})$,
+where $0 < h_1 < t_{k+1} - t_k$. It is clear that $\mathcal{I}_1 \cup \mathcal{I}_2 = [t_k, t_{k+1})$. To avoid Zeno phenomena, the ETM only works after $t_k + h_1$. It indicates that $h_1$ is a waiting period.
+
+Based on the abovementioned intention, we define
+\begin{equation}
+\psi_{m}(t) = e_{m}^{T}(t) \Theta e_{m}(t) - \varpi x_{m}^{T}(t_k) \Theta x_{m}(t_k)
+\end{equation}
+
+where $0 < \varpi < 1$ is a prescribed scalar, $e(t)$ is a state error, and $\Theta > 0$ is a weight matrix to be designed.
+The next releasing event is designed by
+
+\begin{equation}
+t_{k+1} = \inf\{t > t_k + h_1 \mid N_{c}(t) > \nu\}.
+\end{equation}
+
+
+To get a better performance of the ETM, we will reconstruct the state error $e(t)$. Before doing this, we first define a column vector $f(v) = \mathrm{col}\{f_1(v), \ldots, f_p(v)\}$, where $f_1(v)$ satisfies
+$\int_{-h_2}^{0} f_1(v)dv = 1$.
+The other items $f_i(v)$ for $i = 2, \cdots, p$ are chosen to satisfy $\dot{F}(v) = \mathbb{F}F(v)$, where $\mathbb{F} \in \mathbb{R}^{pn\times pn}$, and $F(v) = f(v) \otimes I_n$. Based on these definitions, we then define a new variable that is different from the existing ETMs as follows:
+\begin{equation}
+\tilde{x}_{q}(t) \triangleq \int_{t-h_2}^{t} F(s - t)x(s)ds.
+\end{equation}
+
+The new state error of the ETM is then defined by
+
+\begin{equation}
+e_{q}(t) = H\tilde{x}_{q}(t) - x_{q}(t_k)
+\end{equation}
+
+定义$\Psi_{q}(t)=\begin{cases}
+  0&  \psi_{q}(t)< 0 \\
+  1&  \psi_{q}(t)> 0
+\end{cases}$,$N_{c}(t)=\sum\Psi_{q}(t)\\
+
+
+其中$\nu$为待设计的正整数
+
+Defining $d(t) = t - t_k$ for $t \in \mathcal{I}_1$ follows that
+\begin{equation}
+x_q(t_k) = 
+\begin{cases}
+x_q(t - d(t)) & t \in \mathcal{I}_1 \\
+H\tilde{x}_q(t) - e_q(t) & t \in \mathcal{I}_2.
+\end{cases}
+\end{equation}
+
+Then, it has
+\begin{equation}
+0 \leq d(t) \leq h_1.
+\end{equation}
+
+Therefore, system (9) can be converted into a switched system with two modes as follows:
+\begin{equation}
+\dot{x}_q(t) = \sum_{i=1}^{r} \sum_{j=1}^{r}\sum^{N1}_{n=1} \mu_i(\varphi(t))\mu_j(\varphi(t_k))[\vartheta_{ijq\sigma(t)}(t) + \pi_{ijq}(t)]
+\end{equation}
+for $t \in [t_k, t_{k+1}) = \mathcal{I}_1 \cup \mathcal{I}_2$, where
+\begin{equation}
+\sigma(t) = 
+\begin{cases}
+1 & t \in \mathcal{I}_1 \\
+2 & t \in \mathcal{I}_2
+\end{cases}
+\end{equation}
+and
+\begin{align*}
+\vartheta_{ijq1}(t) &= (A_i + \bar{\alpha}A_{0i})x_q(t) + B_iK_{1j}x_q(t - d(t)) + \bar{\beta}B_iu_a(t_k) \\
+\vartheta_{ijq2}(t) &= (A_i + \bar{\alpha}A_{0i})x_q(t) + B_iK_{2j}H\tilde{x}_q(t) - B_iK_{2j}e_q(t) + \bar{\beta}B_iu_a(t_k) \\
+\pi_{ijq}(t) &= (\alpha(t) - \bar{\alpha})A_{0i}x_q(t) + (\beta(t) - \bar{\beta})B_iu_a(t_k)+r_{nq}x_{n}(t).
+\end{align*}
+\end{document}

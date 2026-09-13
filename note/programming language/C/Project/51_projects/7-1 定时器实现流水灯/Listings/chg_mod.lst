@@ -1,0 +1,36 @@
+C51 COMPILER V9.54   CHG_MOD                                                               04/25/2025 02:16:51 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE CHG_MOD
+OBJECT MODULE PLACED IN .\Objects\chg_mod.obj
+COMPILER INVOKED BY: D:\BaiduNetdiskDownload\C51kaifa\C51\BIN\C51.EXE chg_mod.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXT
+                    -END PRINT(.\Listings\chg_mod.lst) TABS(2) OBJECT(.\Objects\chg_mod.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "Delay.h"
+   3          
+   4          
+   5          unsigned char change_mod()
+   6          {
+   7   1        static unsigned char mode = 0;
+   8   1        if(P3_1 == 0){Delay(20);while(P3_1 == 0);Delay(20);mode = 1;}
+   9   1        if(P3_0 == 0){Delay(20);while(P3_0 == 0);Delay(20);mode = 2;}
+  10   1        if(P3_2 == 0){Delay(20);while(P3_2 == 0);Delay(20);mode = 3;}
+  11   1        return mode;
+  12   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     72    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

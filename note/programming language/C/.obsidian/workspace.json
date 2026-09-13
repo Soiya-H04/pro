@@ -1,0 +1,262 @@
+{
+  "main": {
+    "id": "d312b0a71c77fb2e",
+    "type": "split",
+    "children": [
+      {
+        "id": "c6c40a4401e4bf2b",
+        "type": "tabs",
+        "dimension": 49.853372434017594,
+        "children": [
+          {
+            "id": "1f353e6aa6d21db4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Knowledge/Standard Libaray/math.h.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "math.h"
+            }
+          }
+        ],
+        "stacked": true
+      },
+      {
+        "id": "dcbb4c06fabceae7",
+        "type": "tabs",
+        "dimension": 50.146627565982406,
+        "children": [
+          {
+            "id": "26d7e518537db818",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Knowledge/Standard Libaray/string.h.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "string.h"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "6687bc8efcbdcb52",
+    "type": "split",
+    "children": [
+      {
+        "id": "b4544376776ebe91",
+        "type": "tabs",
+        "dimension": 68.26171875,
+        "children": [
+          {
+            "id": "fccf49e39f256c5a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "ad554013a1be71ce",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#连续存储",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "7b129b299abcaa4b",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      },
+      {
+        "id": "8a87e0d9a10cab5b",
+        "type": "tabs",
+        "dimension": 31.73828125,
+        "children": [
+          {
+            "id": "1c8e7e6f71e6fe63",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "关系图谱"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "d33d928882fc0279",
+    "type": "split",
+    "children": [
+      {
+        "id": "cfb37ea1391daaf5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9c0449320fb9e824",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Knowledge/Basic Concepts/Function.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Function 的反向链接列表"
+            }
+          },
+          {
+            "id": "c9d30549818dd06b",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Knowledge/Data_base/Main_Text.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Main_Text 的出链列表"
+            }
+          },
+          {
+            "id": "dd1964fc9784bd05",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "d4891c21f99a7464",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Knowledge/Basic Concepts/Data Type.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Data Type 的大纲"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "pkmer:Open Pkmer Market": false
+    }
+  },
+  "active": "26d7e518537db818",
+  "lastOpenFiles": [
+    "Knowledge/Standard Libaray/math.h.md",
+    "Knowledge/Standard Libaray/time.h.md",
+    "Knowledge/Standard Libaray/string.h.md",
+    "Knowledge/Standard Libaray/stdlib.h.md",
+    "Knowledge/Standard Libaray/stdio.h.md",
+    "Knowledge/Basic Concepts/String.md",
+    "Knowledge/Basic Concepts/Structure.md",
+    "Knowledge/Basic Concepts/Function.md",
+    "Knowledge/Basic Concepts/File Operator.md",
+    "Knowledge/Basic Concepts/Variable.md",
+    "Knowledge/Basic Concepts/Enumeration.md",
+    "Knowledge/Basic Concepts/Identifier.md",
+    "Knowledge/Basic Concepts/True value.md",
+    "Knowledge/Control_statement/Break Continue.md",
+    "Knowledge/Basic Concepts/Pointer.md",
+    "Knowledge/Basic Concepts/Operator.md",
+    "Knowledge/Basic Concepts/Array.md",
+    "Knowledge/Basic Concepts/codes/test1(Debug).exe",
+    "Knowledge/Basic Concepts/codes/test1(Release).exe",
+    "Knowledge/Basic Concepts/codes/sss.c",
+    "Knowledge/Basic Concepts/codes/dd.txt",
+    "Knowledge/Basic Concepts/codes/test1.c",
+    "Knowledge/Basic Concepts/codes/test4.c",
+    "Knowledge/Basic Concepts/codes/ds.txt",
+    "Knowledge/Basic Concepts/codes/test5.c",
+    "Knowledge/Basic Concepts/codes/test3.c",
+    "Knowledge/Basic Concepts/test/hhhh.txt",
+    "Knowledge/Basic Concepts/Compile Preprocessing.md",
+    "Knowledge/Basic Concepts/Constant.md",
+    "Knowledge/Control_statement/Switch statement.md",
+    "Knowledge/Control_statement/While statement.md",
+    "Knowledge/Control_statement/If statement.md",
+    "Knowledge/Control_statement/For statement.md",
+    "Knowledge/other/Storage code.md",
+    "Knowledge/other/Memory Space.md",
+    "Knowledge/other/Keywords.md",
+    "Knowledge/other/Memory Space/bit与Byte内存空间存储.png",
+    "Knowledge/other/Memory Space/file-20250528085930804.png",
+    "Knowledge/other/Memory Space/本机内存空间.png",
+    "Knowledge/other/Memory Space/file-20250525100320825.png",
+    "Knowledge/Basic Concepts/Data Type/存储一个有符号char类型数值示意.png",
+    "Knowledge/Basic Concepts/Data Type/file-20250524223332934.png",
+    "Knowledge/Basic Concepts/Data Type/存储一个有符号short类型数值示意.png",
+    "Knowledge/Basic Concepts/Data Type/file-20250523081803019.png",
+    "Knowledge/Basic Concepts/Data Type/存储一个float类型数值示意.png",
+    "Knowledge/Basic Concepts/Data Type/file-20250523080602975.png"
+  ]
+}

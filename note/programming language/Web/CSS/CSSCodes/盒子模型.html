@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盒子模型</title>
+    <link rel="stylesheet" href="./Sources/盒子模型 CSS.css">
+</head>
+<body>
+    <!-- border -->
+    <table class="border">
+        <tr>
+            <th>table 的标题</th> 
+            <th>table 的标题</th> 
+            <th>table 的标题</th> 
+
+        </tr>
+        <tr>
+            <td>table 的内容</td>
+            <td>table 的内容</td>
+            <td>table 的内容</td>
+        </tr>
+        <tr>
+            <td>table 的内容</td>
+            <td>table 的内容</td>
+            <td>table 的内容</td>
+        </tr>
+        <tr>
+            <td>table 的内容</td>
+            <td>table 的内容</td>
+            <td>table 的内容</td>
+        </tr>
+    </table>
+
+    <!-- padding -->
+    <div class="padding">
+        中国天气网气象分析师王伟跃介绍，明天（4日），华北、黄淮地区35℃以上的高温天气还将继续升级，并进入鼎盛阶段，高温强度和范围都将发展到最强。 明天，北京南部、天津大部、河北中部和南部、山东中部和西部、山西南部局地、河南北部、东北部分地区的最高气温都将达到或超过35℃。
+    </div>
+
+    <!-- margin -->
+    <div class="margin">
+        中国天气网气象分析师王伟跃介绍，明天（4日），华北、黄淮地区35℃以上的高温天气还将继续升级，并进入鼎盛阶段，高温强度和范围都将发展到最强。 明天，北京南部、天津大部、河北中部和南部、山东中部和西部、山西南部局地、河南北部、东北部分地区的最高气温都将达到或超过35℃.
+    </div>
+
+    <!-- 外边距合并 相邻块(仍存)  -->
+    <!-- 间隔 40 px -->
+    <div class="brother1">哈哈哈</div>
+    <div class="brother2">哈哈哈</div>
+
+    <!-- 外边距塌陷 嵌套块(无了)  -->
+    <div class="father">
+        我是爸爸
+    <div class="son">我是儿子</div>
+    </div>
+
+    <!-- 默认内外边距 -->
+     <div class="default">
+        默认内外边距
+     </div>
+
+</body>
+</html>

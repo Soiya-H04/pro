@@ -1,0 +1,62 @@
+/* 一层 */
+.one {
+    width: 1200px;
+    height: 390px;
+    margin: auto auto;
+}
+
+/* 二层 */
+.two {
+    float: left;
+}
+
+/* 二层 左 */
+.twol {
+    width: 226px;
+    height: 390px;
+    margin-right: 9px;
+}
+
+/* 二层 右 */
+.twor {
+    width: 955px;
+    height: 390px;
+    margin-left: 10px;
+}
+
+/* 三层 上 */
+.threeu {
+    width: 955px;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+/* 三层 下 */
+.threed {
+    width: 955px;
+    height: 270px;
+    margin-top: 20px;
+}
+
+/* 四层 */
+.four {
+    float: left;
+    width: 225px;
+    height: 270px;
+}
+
+/* 四层 左 */
+.fourl {
+    margin-right: 9px;
+}
+
+/* 四层 中 */
+.fourc {
+    margin-left: 9px;
+    margin-right: 9px;
+}
+
+/* 四层 右 */
+.fourr {
+    margin-left: 9px;
+}

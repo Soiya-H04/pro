@@ -1,0 +1,7 @@
+关系数据库
+https://en.wikipedia.org/wiki/Relational_database
+
+廖雪峰的 SQL 教程
+https://liaoxuefeng.com/books/sql/relational/index.html
+
+

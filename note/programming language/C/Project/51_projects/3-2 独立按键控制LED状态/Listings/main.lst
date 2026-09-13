@@ -1,0 +1,87 @@
+C51 COMPILER V9.54   MAIN                                                                  08/08/2025 03:24:48 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Download\Keil uVision5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(
+                    -.\Listings\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          /*
+   2          
+   3          name:   独立按键控制 LED 状态
+   4          param:    无
+   5          retval:   无
+   6          ref:    REGX52.H Delay.h
+   7          use to:   开始 D1 一个 LED 亮。K1 按下后，LED 向左移动；K2 按下后，LED 不移动；K3 �
+             -�下后， LED 向右移动；K4 按下后，LED 重置。
+   8          updatetime: 
+   9          
+  10          */
+  11          
+  12          #include <REGX52.H>
+  13          #include "Delay.h"
+  14          
+  15          void main()
+  16          {
+  17   1        unsigned int state = 0;
+  18   1        P2 = 0xFF;
+  19   1        P2_0 = 0;
+  20   1        while(1)
+  21   1        {
+  22   2          if (0  == P3_1){Delay(20);while(0 == P3_1);Delay(20);state = 1;}
+  23   2          if (0  == P3_0){Delay(20);while(0 == P3_0);Delay(20);state = 2;}
+  24   2          if (0  == P3_2){Delay(20);while(0 == P3_2);Delay(20);state = 3;}
+  25   2          if (0  == P3_3){Delay(20);while(0 == P3_3);Delay(20);state = 4;}
+  26   2          switch (state)
+  27   2          {
+  28   3          case 1: // 左移（板）
+  29   3            Delay(500);
+  30   3            if (P2_0 == 1)
+  31   3            {
+  32   4              // 右移补 1
+  33   4              P2 = (P2 >> 1) | 0X80;
+  34   4            }
+  35   3            else
+  36   3            {
+  37   4              P2 = P2 >> 1;
+  38   4            }
+  39   3            break;
+  40   3          case 2: // 暂停
+  41   3            break;
+  42   3          case 3: // 右移(板)
+  43   3            Delay(500);
+  44   3            if (P2_7 == 1)
+  45   3            {
+  46   4              P2 = (P2 << 1) | 0x01;
+  47   4            }
+  48   3            else
+  49   3            {
+  50   4              P2 = P2 << 1;
+  51   4            }
+  52   3            break;
+  53   3          case 4: // 重置
+C51 COMPILER V9.54   MAIN                                                                  08/08/2025 03:24:48 PAGE 2   
+
+  54   3            P2 = 0xFF;
+  55   3            P2_0 = 0;
+  56   3            break;
+  57   3          default:break;
+  58   3          }
+  59   2        }
+  60   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    191    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

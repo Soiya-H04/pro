@@ -1,0 +1,23 @@
+div {
+    background: red;
+    color: green;
+}
+
+div {
+    background: pink;
+    color: yellow;
+    width: 150px;
+    text-align: center;
+}
+
+li {
+    color: blue;
+}
+
+.li {
+    color: brown;
+}
+
+#li {
+    color: #888888;
+}

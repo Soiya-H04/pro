@@ -1,0 +1,242 @@
+C51 COMPILER V9.54   MAIN1                                                                 08/10/2025 22:18:55 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN1
+OBJECT MODULE PLACED IN .\Objects\main1.obj
+COMPILER INVOKED BY: D:\Download\Keil uVision5\C51\BIN\C51.EXE main1.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT
+                    -(.\Listings\main1.lst) TABS(2) OBJECT(.\Objects\main1.obj)
+
+line level    source
+
+   1          /*
+   2          
+   3          name:     密码锁
+   4          ref:      
+   5          use to:     
+   6          updatetime:   2025-08-09
+   7          
+   8          */
+   9          
+  10          #include "LCDShow.h"
+  11          #include "LEDShow.h"
+  12          #include "IndependentKey.h"
+  13          #include "MatrixKey.h"
+  14          #include "PasswdOperator.h"
+  15          #include "Delay.h"
+  16          
+  17          void main()
+  18          {
+  19   1        // 开始进行初始化
+  20   1        // LCD LCD 初始化
+  21   1        LED_init();
+  22   1        LCD_init();
+  23   1        
+  24   1        // 初始化正确密码数组与用户数组
+  25   1        unsigned char oripasswd[6] = {1,2,3,4,5,6};
+*** ERROR C141 IN LINE 25 OF main1.c: syntax error near 'unsigned'
+*** ERROR C202 IN LINE 25 OF main1.c: 'oripasswd': undefined identifier
+*** ERROR C141 IN LINE 25 OF main1.c: syntax error near '{'
+*** ERROR C141 IN LINE 25 OF main1.c: syntax error near '}'
+  26   1        unsigned char userpasswd[6] = {0,0,0,0,0,0};
+*** ERROR C141 IN LINE 26 OF main1.c: syntax error near 'unsigned'
+*** ERROR C141 IN LINE 26 OF main1.c: syntax error near '{'
+*** ERROR C141 IN LINE 26 OF main1.c: syntax error near '}'
+  27   1        
+  28   1        // 初始化错误次数
+  29   1        unsigned char count_error = 0;
+*** ERROR C141 IN LINE 29 OF main1.c: syntax error near 'unsigned'
+  30   1        
+  31   1        Delay(2000);
+  32   1        // 初始化完成
+  33   1        while(count_error < 8)
+*** ERROR C202 IN LINE 33 OF main1.c: 'count_error': undefined identifier
+  34   1        {
+  35   2          // 进入密码输入界面(未输入状态)
+  36   2          LCD_input_show(0);
+  37   2          // 重置用户密码数组
+  38   2          passwd_reset(userpasswd);
+*** ERROR C202 IN LINE 38 OF main1.c: 'userpasswd': undefined identifier
+  39   2          // 密码正确标志
+  40   2          unsigned char flag_match = 0;
+*** ERROR C141 IN LINE 40 OF main1.c: syntax error near 'unsigned'
+*** ERROR C202 IN LINE 40 OF main1.c: 'flag_match': undefined identifier
+  41   2          // 提前确认检测标志
+  42   2          unsigned char flag_handin_false = 0;
+C51 COMPILER V9.54   MAIN1                                                                 08/10/2025 22:18:55 PAGE 2   
+
+*** ERROR C141 IN LINE 42 OF main1.c: syntax error near 'unsigned'
+*** ERROR C202 IN LINE 42 OF main1.c: 'flag_handin_false': undefined identifier
+  43   2          // 重置密码检测标志
+  44   2          unsigned char flag_reset = 0;
+*** ERROR C141 IN LINE 44 OF main1.c: syntax error near 'unsigned'
+*** ERROR C202 IN LINE 44 OF main1.c: 'flag_reset': undefined identifier
+  45   2          // 密码锁住检测标志
+  46   2          unsigned char flag_locked = 0;
+*** ERROR C141 IN LINE 46 OF main1.c: syntax error near 'unsigned'
+*** ERROR C202 IN LINE 46 OF main1.c: 'flag_locked': undefined identifier
+  47   2          // 设置当前位数位 1,开始进入第一位密码的输入
+  48   2          unsigned char count_passwd = 1;
+*** ERROR C141 IN LINE 48 OF main1.c: syntax error near 'unsigned'
+*** ERROR C202 IN LINE 48 OF main1.c: 'count_passwd': undefined identifier
+  49   2          unsigned char flag_down = 0;
+*** ERROR C141 IN LINE 49 OF main1.c: syntax error near 'unsigned'
+*** ERROR C202 IN LINE 49 OF main1.c: 'flag_down': undefined identifier
+  50   2          // 进行第 1 到第 6 位的输入
+  51   2          while (count_passwd <= 6)
+*** ERROR C202 IN LINE 51 OF main1.c: 'count_passwd': undefined identifier
+  52   2          {
+  53   3            
+  54   3            // 检测 independentkey
+  55   3            independentkey = independentkey_get();
+*** ERROR C202 IN LINE 55 OF main1.c: 'independentkey': undefined identifier
+  56   3            switch(independentkey)
+*** ERROR C202 IN LINE 56 OF main1.c: 'independentkey': undefined identifier
+  57   3            {
+  58   4              // 密码输入模式
+  59   4              case 0:
+  60   4                // 检测 matrixkey
+  61   4                matrixkey = matrixkey_get();
+*** ERROR C202 IN LINE 61 OF main1.c: 'matrixkey': undefined identifier
+  62   4                // matrixkey 的有效范围 1-10
+  63   4                if (matrixkey <= 10 && matrixkey >= 1)
+*** ERROR C202 IN LINE 63 OF main1.c: 'matrixkey': undefined identifier
+  64   4                {
+  65   5                  // 输入到用户密码数组的当前位
+  66   5                  passwd_input(userpasswd,count_passwd - 1,matrixkey);
+*** ERROR C202 IN LINE 66 OF main1.c: 'userpasswd': undefined identifier
+  67   5                  // LCD 显示已输入该位
+  68   5                  LCD_input_show(count_passwd);
+*** ERROR C202 IN LINE 68 OF main1.c: 'count_passwd': undefined identifier
+  69   5                  // 进入下一位
+  70   5                  count_passwd++;
+*** ERROR C202 IN LINE 70 OF main1.c: 'count_passwd': undefined identifier
+  71   5                }
+  72   4                break;
+  73   4              // 密码提前确认
+  74   4              // 因为在这时还是 1-5 位的输入,输入第 6 位后会退出本次密码输入,所以在这�
+             -�按下确认是错误的
+  75   4              case 1:
+  76   4                // 提前确认检测标志置 1
+  77   4                flag_handin_false = 1;
+*** ERROR C202 IN LINE 77 OF main1.c: 'flag_handin_false': undefined identifier
+  78   4                break;
+  79   4              // 密码重置
+  80   4              case 2:
+  81   4                // 重置密码检测标志置 1
+  82   4                flag_reset = 1;
+*** ERROR C202 IN LINE 82 OF main1.c: 'flag_reset': undefined identifier
+  83   4                break;
+C51 COMPILER V9.54   MAIN1                                                                 08/10/2025 22:18:55 PAGE 3   
+
+  84   4              // 密码设置
+  85   4              case 3:
+  86   4                break;
+  87   4              // 密码锁住
+  88   4              case 4:
+  89   4                flag_locked = 1;
+*** ERROR C202 IN LINE 89 OF main1.c: 'flag_locked': undefined identifier
+  90   4                LCD_locked();
+  91   4                while(flag_locked)
+*** ERROR C202 IN LINE 91 OF main1.c: 'flag_locked': undefined identifier
+  92   4                {
+  93   5                  independentkey = independentkey_get();
+*** ERROR C202 IN LINE 93 OF main1.c: 'independentkey': undefined identifier
+  94   5                  if (independentkey == 4)
+*** ERROR C202 IN LINE 94 OF main1.c: 'independentkey': undefined identifier
+  95   5                  {
+  96   6                    flag_locked = 0;
+*** ERROR C202 IN LINE 96 OF main1.c: 'flag_locked': undefined identifier
+  97   6                    LCD_unlocked();
+  98   6                    Delay(2000);
+  99   6                  }
+ 100   5                }
+ 101   4                break;
+ 102   4              // 确保无其他状态
+ 103   4              default:break;
+ 104   4            }
+ 105   3            // 在这里检测一下是否提前确认
+ 106   3            if(flag_handin_false)
+*** ERROR C202 IN LINE 106 OF main1.c: 'flag_handin_false': undefined identifier
+ 107   3            {
+ 108   4              // LCD 显示位数不足的错误
+ 109   4              LCD_error1_show();
+ 110   4              // 错误次数 + 1
+ 111   4              count_error++;
+*** ERROR C202 IN LINE 111 OF main1.c: 'count_error': undefined identifier
+ 112   4              // LED 亮一盏灯
+ 113   4              LED_error_show(count_error);
+*** ERROR C202 IN LINE 113 OF main1.c: 'count_error': undefined identifier
+ 114   4              // 退出本次密码输入
+ 115   4              Delay(2000);
+ 116   4              break;
+ 117   4            }
+ 118   3            if (flag_reset)
+*** ERROR C202 IN LINE 118 OF main1.c: 'flag_reset': undefined identifier
+ 119   3            {
+ 120   4              break;
+ 121   4            }
+ 122   3          }
+ 123   2          // 检测是否密码完全输入
+ 124   2          if (count_passwd == 7)
+*** ERROR C202 IN LINE 124 OF main1.c: 'count_passwd': undefined identifier
+ 125   2          {
+ 126   3            // 密码正确
+ 127   3            if (passwd_match(oripasswd,userpasswd))
+*** ERROR C202 IN LINE 127 OF main1.c: 'oripasswd': undefined identifier
+ 128   3            {
+ 129   4              // 密码正确标志置 1
+ 130   4              flag_match = 1;
+*** ERROR C202 IN LINE 130 OF main1.c: 'flag_match': undefined identifier
+ 131   4              // 退出错误次数检测
+ 132   4              break;
+ 133   4            }
+C51 COMPILER V9.54   MAIN1                                                                 08/10/2025 22:18:55 PAGE 4   
+
+ 134   3            // 密码不正确
+ 135   3            else
+ 136   3            {
+ 137   4              // LCD 显示密码不正确页面
+ 138   4              LCD_error0_show();
+ 139   4              // 错误次数 + 1
+ 140   4              count_error++;
+*** ERROR C202 IN LINE 140 OF main1.c: 'count_error': undefined identifier
+ 141   4              // LED 更新状态
+ 142   4              LED_error_show(count_error);
+*** ERROR C202 IN LINE 142 OF main1.c: 'count_error': undefined identifier
+ 143   4              // 持续两秒
+ 144   4              Delay(2000);
+ 145   4            }
+ 146   3          }
+ 147   2        }
+ 148   1        // 退出错误次数检测,有两种情况:1. 密码正确需要进行密码匹配 2. 密码 8 次输错
+ 149   1        // 密码输入完全,进行密码匹配
+ 150   1        if(flag_match)
+*** ERROR C202 IN LINE 150 OF main1.c: 'flag_match': undefined identifier
+ 151   1        {
+ 152   2          // LCD 显示正确界面
+ 153   2          LCD_right_show();
+ 154   2          while(1)
+ 155   2          {
+ 156   3          // LED 持续执行流水灯
+ 157   3          LED_right_show();
+ 158   3          }
+ 159   2      
+ 160   2        }
+ 161   1        // 密码 8 次错误,锁死(防止出现两种情况)
+ 162   1        else if (count_error == 8)
+*** ERROR C202 IN LINE 162 OF main1.c: 'count_error': undefined identifier
+ 163   1        {
+ 164   2          // 锁死标志置 1
+ 165   2          flag_down = 1;
+*** ERROR C202 IN LINE 165 OF main1.c: 'flag_down': undefined identifier
+ 166   2          // 显示锁死界面
+ 167   2          LCD_down();
+ 168   2          // 锁死在这里
+ 169   2          while(1)
+ 170   2          {
+ 171   3            
+ 172   3          }
+ 173   2        }
+ 174   1      }
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  49 ERROR(S)

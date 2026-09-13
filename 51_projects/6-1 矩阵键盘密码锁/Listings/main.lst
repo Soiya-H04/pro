@@ -1,0 +1,394 @@
+C51 COMPILER V9.54   MAIN                                                                  08/28/2025 19:47:57 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Download\Keil uVision5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(
+                    -.\Listings\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          /*
+   2          
+   3          name:     矩阵键盘密码锁
+   4          param:      
+   5          retval:     使用矩阵键盘的 S1-S10 来进行密码输入。
+   6                  使用 K1 来进行确认；使用 K2 来进行重置；使用 K3 来进行密码设置（初始密码
+             -为 123456。）：使用 K4 来进行锁死,再按下解锁。
+   7                  同时通过 LED 来进行次数限制，即输入错误一次就亮一个，如果全亮后无法再�
+             -��行密码确认。
+   8          ref:      REGX52.H 
+   9          updatetime:   
+  10          
+  11          */
+  12          
+  13           #include "LCDShow.h"
+  14           #include "LEDShow.h"
+  15           #include "IndependentKey.h"
+  16           #include "MatrixKey.h"
+  17           #include "PasswdOperator.h"
+  18           #include "Delay.h"
+  19          
+  20          // 最大输入错误次数
+  21          #define MAX_ERROR 5
+  22          // 密码最大位数
+  23          #define MAX_PASSWD 6
+  24          // 宏 0
+  25          #define NONE 0
+  26          // 宏 1
+  27          #define OK 1
+  28          // 最大输入数
+  29          #define MAX_INPUT 10
+  30          // 最小输入数
+  31          #define MIN_INPUT 1
+  32          
+  33          
+  34          // independentkey 的状态
+  35          typedef enum{
+  36            IKEY_NONE = 0,
+  37            IKEY_OK,
+  38            IKEY_RESET,
+  39            IKEY_SET,
+  40            IKEY_LOCK
+  41          } IKEY_STATE;
+  42          
+  43          int main(void)
+  44          {
+  45   1        // 原始密码数组
+  46   1        unsigned char oripasswd[6] = {1,2,3,4,5,6};
+  47   1        // 原始用户数组
+  48   1        unsigned char userpasswd[6] = {0,0,0,0,0,0};
+  49   1        // 独立按键返回值
+  50   1        unsigned char independentkey = NONE;
+  51   1        // 矩阵键盘返回值
+  52   1        unsigned char matrixkey = NONE;
+C51 COMPILER V9.54   MAIN                                                                  08/28/2025 19:47:57 PAGE 2   
+
+  53   1        // 当前错误次数
+  54   1        unsigned char count_error = NONE;
+  55   1        // 密码位数
+  56   1        unsigned char count_passwd = NONE;
+  57   1        // 重置密码位数
+  58   1        unsigned char count_set = NONE;
+  59   1        // 密码匹配成功标志
+  60   1        unsigned char flag_match = NONE;
+  61   1        // 密码可输入标志
+  62   1        unsigned char flag_input = NONE;
+  63   1        // 密码锁住标志
+  64   1        unsigned char flag_locked = NONE;
+  65   1        // 密码提前确认标志
+  66   1        unsigned char flag_falseok = NONE;
+  67   1        // 密码重置标志
+  68   1        unsigned char flag_reset = NONE;
+  69   1        // 密码设置标志
+  70   1        unsigned char flag_set = NONE;
+  71   1        
+  72   1        
+  73   1        // LCD 登录界面显示
+  74   1        LCD_initial();
+  75   1        // LED 初始化为全灭
+  76   1        LED_initial();
+  77   1        
+  78   1        // 延时 2 s
+  79   1        Delay(2000);
+  80   1        
+  81   1        // 当错误次数小于等于 8,可以输入密码
+  82   1        while(count_error < MAX_ERROR)
+  83   1        {
+  84   2          // 把所有标志置 0
+  85   2          flag_input = NONE;
+  86   2          flag_falseok = NONE;
+  87   2          flag_locked = NONE;
+  88   2          flag_match = NONE;
+  89   2          flag_reset = NONE;
+  90   2          flag_set = NONE;
+  91   2          // 首先将密码当前位数置到 1
+  92   2          count_passwd = 1;
+  93   2          
+  94   2          // 用户密码数组清零
+  95   2          passwd_reset(userpasswd);
+  96   2          // 显示 LCD 未输入密码的密码输入界面
+  97   2          LCD_input(NONE);
+  98   2          // 开始进行密码输入
+  99   2          while(count_passwd <= MAX_PASSWD)
+ 100   2          {
+ 101   3            // 获得当前 independentkey
+ 102   3            independentkey = independentkey_get();
+ 103   3            // 检测独立按键值
+ 104   3            switch(independentkey)
+ 105   3            {
+ 106   4              // 输入密码
+ 107   4              case IKEY_NONE:
+ 108   4                flag_input = OK;
+ 109   4                break;
+ 110   4              // 提前确认密码
+ 111   4              case IKEY_OK:
+ 112   4                // 密码提前确认报错标志置 1
+ 113   4                flag_falseok = OK;
+ 114   4                break;
+C51 COMPILER V9.54   MAIN                                                                  08/28/2025 19:47:57 PAGE 3   
+
+ 115   4              // 重置密码
+ 116   4              case IKEY_RESET:
+ 117   4                // 密码重置标志置 1
+ 118   4                flag_reset = OK;
+ 119   4                break;
+ 120   4              // 设置密码
+ 121   4              case IKEY_SET:
+ 122   4                // 密码设置标志置 1
+ 123   4                flag_set = OK;
+ 124   4                break;
+ 125   4              // 锁住密码
+ 126   4              case IKEY_LOCK:
+ 127   4                // 密码锁住标志置 1,除锁住按键其余按键均无效
+ 128   4                flag_locked = OK;
+ 129   4                break;
+ 130   4            }
+ 131   3            // 对于不同的标志做出相对反应
+ 132   3            // 密码可输入
+ 133   3            if (flag_input)
+ 134   3            {
+ 135   4              // 获得当前 matrixkey
+ 136   4              matrixkey = matrixkey_get();
+ 137   4              // matrixkey 有效范围位 1-10
+ 138   4              if (matrixkey >= MIN_INPUT && matrixkey <= MAX_INPUT)
+ 139   4              {
+ 140   5                // 将 matrixkey 输入到当前位的用户密码数组中
+ 141   5                passwd_input(userpasswd, count_passwd-1, matrixkey);
+ 142   5                // LCD 显示当前位已被输入
+ 143   5                LCD_input(count_passwd);
+ 144   5                // 将位数移动到下一位
+ 145   5                count_passwd++;
+ 146   5              }
+ 147   4              // 标志重置
+ 148   4              flag_input = NONE;
+ 149   4            }
+ 150   3            // 密码提前确认
+ 151   3            if (flag_falseok)
+ 152   3            {
+ 153   4              // LCD 显示密码提前确认错误
+ 154   4              LCD_error1();
+ 155   4              // 错误次数+1
+ 156   4              count_error++;
+ 157   4              // LED 亮起相应的灯数
+ 158   4              LED_error(count_error);
+ 159   4              // 标志重置
+ 160   4              flag_falseok = NONE;
+ 161   4              // 停留 2s
+ 162   4              Delay(2000);
+ 163   4              // 退出本次输入
+ 164   4              break;
+ 165   4            }
+ 166   3            // 密码重置
+ 167   3            if (flag_reset)
+ 168   3            {
+ 169   4              // 标志重置
+ 170   4              flag_reset = NONE;
+ 171   4              // 直接退出本次输入就行
+ 172   4              break;
+ 173   4            }
+ 174   3            // 密码锁住
+ 175   3            if (flag_locked)
+ 176   3            {
+C51 COMPILER V9.54   MAIN                                                                  08/28/2025 19:47:57 PAGE 4   
+
+ 177   4              // LCD 显示锁住界面
+ 178   4              LCD_locked();
+ 179   4              // 当一直锁住时
+ 180   4              while(flag_locked)
+ 181   4              {
+ 182   5                // 只用再次按下才能解开
+ 183   5                if (independentkey_get() == IKEY_LOCK)
+ 184   5                {
+ 185   6                  // 显示 LCD 解开界面
+ 186   6                  LCD_unlocked();
+ 187   6                  // 延迟 2s
+ 188   6                  Delay(2000);
+ 189   6                  // 重置标志
+ 190   6                  flag_locked = NONE;
+ 191   6                  // 回到刚刚的密码输入界面,由于在上次的密码输入后现在的密码位数会多 1
+ 192   6                  LCD_input(count_passwd-1);
+ 193   6                  break;
+ 194   6                }
+ 195   5              }
+ 196   4            }
+ 197   3            if (flag_set)
+ 198   3            {
+ 199   4              // 重置标志
+ 200   4              flag_set = NONE;
+ 201   4              // 重置错误次数与密码位数
+ 202   4              count_error = 0;
+ 203   4              count_passwd = 1;
+ 204   4              // 重置用户数组用以验证
+ 205   4              passwd_reset(userpasswd);
+ 206   4              // 进行密码设置
+ 207   4              // 进行旧密码输入，旧密码输入正确再进行密码设置
+ 208   4              while(1)
+ 209   4              {
+ 210   5                // 旧密码初始位数
+ 211   5                count_set = 1;
+ 212   5                // 显示旧密码验证初始界面
+ 213   5                LCD_oldpasswd_set(count_set-1);
+ 214   5                while(count_set <= MAX_PASSWD)
+ 215   5                {
+ 216   6                  // 密码输入
+ 217   6                  matrixkey = matrixkey_get();
+ 218   6                  if (matrixkey >= MIN_INPUT && matrixkey <= MAX_INPUT)
+ 219   6                  {
+ 220   7                    LCD_oldpasswd_set(count_set);
+ 221   7                    userpasswd[count_set-1] = matrixkey;
+ 222   7                    count_set++;
+ 223   7                  }
+ 224   6                }
+ 225   5                // 密码匹配成功，跳出旧密码输入
+ 226   5                if(passwd_match(oripasswd, userpasswd))
+ 227   5                {
+ 228   6                  break;
+ 229   6                }
+ 230   5                // 显示旧密码错误 2 s，并重新进行旧密码输入
+ 231   5                else
+ 232   5                {
+ 233   6                  LCD_error0();
+ 234   6                  Delay(2000);
+ 235   6                }
+ 236   5              }
+ 237   4              // 进行新密码输入
+ 238   4              // 新密码初始位数
+C51 COMPILER V9.54   MAIN                                                                  08/28/2025 19:47:57 PAGE 5   
+
+ 239   4              count_set = 1;
+ 240   4              // 显示新密码验证初始界面
+ 241   4              LCD_newpasswd_set(count_set-1);
+ 242   4              while(count_set <= MAX_PASSWD)
+ 243   4              {
+ 244   5                // 密码输入
+ 245   5                matrixkey = matrixkey_get();
+ 246   5                if (matrixkey >= MIN_INPUT && matrixkey <= MAX_INPUT)
+ 247   5                {
+ 248   6                  LCD_newpasswd_set(count_set);
+ 249   6                  oripasswd[count_set-1] = matrixkey;
+ 250   6                  count_set++;
+ 251   6                }
+ 252   5              }
+ 253   4              // 进行新密码验证
+ 254   4              while(1)
+ 255   4              {
+ 256   5                // 新密码初始位数
+ 257   5                count_set = 1;
+ 258   5                // 显示新密码验证初始界面
+ 259   5                LCD_newpasswd_again(count_set-1);
+ 260   5                while(count_set <= MAX_PASSWD)
+ 261   5                {
+ 262   6                  // 密码输入
+ 263   6                  matrixkey = matrixkey_get();
+ 264   6                  if (matrixkey >= MIN_INPUT && matrixkey <= MAX_INPUT)
+ 265   6                  {
+ 266   7                    LCD_newpasswd_again(count_set);
+ 267   7                    userpasswd[count_set-1] = matrixkey;
+ 268   7                    count_set++;
+ 269   7                  }
+ 270   6                }
+ 271   5                // 密码匹配成功，跳出新密码验证，显示密码设置成功两秒，并退出密码设�
+             -�
+ 272   5                if(passwd_match(oripasswd, userpasswd))
+ 273   5                {
+ 274   6                  LCD_set_OK();
+ 275   6                  Delay(2000);
+ 276   6                  break;
+ 277   6                }
+ 278   5                // 显示新密码错误 2 s，并重新进行新密码输入
+ 279   5                else
+ 280   5                {
+ 281   6                  LCD_error0();
+ 282   6                  Delay(2000);
+ 283   6                }
+ 284   5              } 
+ 285   4              passwd_reset(userpasswd);
+ 286   4              break;
+ 287   4            }
+ 288   3          }
+ 289   2          // 到这里有三种情况:1. 重置(不用管);2. 密码完成输入 3. 提前确认密码(不用管)
+ 290   2          // 密码完成输入
+ 291   2          if (count_passwd > MAX_PASSWD)
+ 292   2          {
+ 293   3            // 只有确认后才会进行下一步
+ 294   3            while(independentkey_get() != IKEY_OK)
+ 295   3            {
+ 296   4              if (independentkey_get() == IKEY_LOCK)
+ 297   4              {
+ 298   5                LCD_locked();
+ 299   5                while(independentkey_get() != IKEY_LOCK)
+C51 COMPILER V9.54   MAIN                                                                  08/28/2025 19:47:57 PAGE 6   
+
+ 300   5                {
+ 301   6                  
+ 302   6                }
+ 303   5                LCD_unlocked();
+ 304   5                Delay(2000);
+ 305   5                LCD_input(count_passwd-1);
+ 306   5              }
+ 307   4            }
+ 308   3            // 原密码与用户输入密码进行匹配
+ 309   3            flag_match = passwd_match(oripasswd,userpasswd);
+ 310   3            // 密码匹配成功
+ 311   3            if (flag_match)
+ 312   3            {
+ 313   4              break;
+ 314   4            }
+ 315   3            // 匹配失败
+ 316   3            else
+ 317   3            {
+ 318   4              // LCD 显示密码匹配失败界面
+ 319   4              LCD_error0();
+ 320   4              // 错误次数+1
+ 321   4              count_error++;
+ 322   4              // LED 亮起相应的灯数
+ 323   4              LED_error(count_error);
+ 324   4              // 延迟 2s
+ 325   4              Delay(2000);
+ 326   4            }
+ 327   3          }
+ 328   2        }
+ 329   1        // 两种可能:1. 密码匹配成功;2. 密码输入错误 8 次
+ 330   1        // 密码匹配成功
+ 331   1        if (flag_match)
+ 332   1        {
+ 333   2          // 重置标志
+ 334   2          flag_match = NONE;
+ 335   2          // LCD 显示密码匹配成功界面
+ 336   2          LCD_right();
+ 337   2          // LED 显示密码匹配成功
+ 338   2          LED_initial();
+ 339   2          while(OK)
+ 340   2          {
+ 341   3            
+ 342   3          }
+ 343   2        }
+ 344   1        // 密码输入错误 8 次
+ 345   1        if (count_error == MAX_ERROR)
+ 346   1        {
+ 347   2          // LCD 显示锁死界面
+ 348   2          LCD_down();
+ 349   2          while(OK)
+ 350   2          {
+ 351   3            
+ 352   3          }
+ 353   2        }
+ 354   1        return 0;
+ 355   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    683    ----
+   CONSTANT SIZE    =     12    ----
+   XDATA SIZE       =   ----    ----
+C51 COMPILER V9.54   MAIN                                                                  08/28/2025 19:47:57 PAGE 7   
+
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      23
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

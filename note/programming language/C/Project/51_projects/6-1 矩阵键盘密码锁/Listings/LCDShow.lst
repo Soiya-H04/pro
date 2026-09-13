@@ -1,0 +1,267 @@
+C51 COMPILER V9.54   LCDSHOW                                                               08/28/2025 19:47:56 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE LCDSHOW
+OBJECT MODULE PLACED IN .\Objects\LCDShow.obj
+COMPILER INVOKED BY: D:\Download\Keil uVision5\C51\BIN\C51.EXE LCDShow.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRI
+                    -NT(.\Listings\LCDShow.lst) TABS(2) OBJECT(.\Objects\LCDShow.obj)
+
+line level    source
+
+   1          /*
+   2          
+   3          name:     LCDShow.c
+   4          ref:      LCD1602.h REGX52.H
+   5          use to:     使用 LCD 显示相关信息。
+   6          updatetime:   2025-08-08
+   7          
+   8          */
+   9          
+  10          #include "LCD1602.h"
+  11          
+  12          /*
+  13          
+  14          function name:    LCD_init
+  15          param:        none
+  16          retval:       none
+  17          description:    LCD 屏的初始化
+  18          updatetime:     2025-08-08
+  19          
+  20          */
+  21          void LCD_initial()
+  22          {
+  23   1        LCD_Init();
+  24   1        LCD_ShowString(1,1,"Welcome Home!");
+  25   1        LCD_ShowString(2,1,"My Friend.");
+  26   1      }
+  27          
+  28          /*
+  29          
+  30          function name:    LCD_input_show
+  31          param:        index
+  32          retval:       none
+  33          description:    用 * 显示密码输入
+  34          updatetime:     2025-08-08
+  35          
+  36          */
+  37          
+  38          void LCD_input(unsigned char index)
+  39          {
+  40   1        unsigned char i = 1;
+  41   1        LCD_Init();
+  42   1        LCD_ShowString(1,1,"Passwd:");
+  43   1        for (i;i <= index;i++)
+  44   1        {
+  45   2          LCD_ShowChar(2,i,'*');
+  46   2        }
+  47   1      }
+  48          
+  49          /*
+  50          
+  51          function name:    LCD_right_show
+  52          param:        none
+  53          retval:       none
+  54          description:    密码输入正确以后的显示
+C51 COMPILER V9.54   LCDSHOW                                                               08/28/2025 19:47:56 PAGE 2   
+
+  55          updatetime:     2025-08-08
+  56          
+  57          */
+  58          
+  59          void LCD_right()
+  60          {
+  61   1        LCD_Init();
+  62   1        LCD_ShowString(1,1,"Right!");
+  63   1        LCD_ShowString(2,1,"Please Come In.");
+  64   1      }
+  65          
+  66          /*
+  67          
+  68          function name:    LCD_error0_show
+  69          param:        none
+  70          retval:       1
+  71          description:    密码输入错误的显示，返回 1
+  72          updatetime:     2025-08-08
+  73          
+  74          */
+  75          
+  76          void LCD_error0()
+  77          {
+  78   1        LCD_Init();
+  79   1        LCD_ShowString(1,1,"error:");
+  80   1        LCD_ShowString(2,1,"Passwd is wrong.");
+  81   1      }
+  82          
+  83          /*
+  84          
+  85          function name:    LCD_error1_show
+  86          param:        none
+  87          retval:       1
+  88          description:    密码输入位数不足的显示，返回 1
+  89          updatetime:     2025-08-08
+  90          
+  91          */
+  92          
+  93          void LCD_error1()
+  94          {
+  95   1        LCD_Init();
+  96   1        LCD_ShowString(1,1,"error:");
+  97   1        LCD_ShowString(2,1,"count is wrong.");
+  98   1      }
+  99          
+ 100          /*
+ 101          
+ 102          function name:    LCD_oldpasswd_set_show
+ 103          param:        passwd_index
+ 104          retval:       none
+ 105          description:    设置密码时，显示占位的 *
+ 106          updatetime:     2025-08-09  
+ 107          
+ 108          */
+ 109          
+ 110          void LCD_oldpasswd_set(unsigned char passwd_index)
+ 111          {
+ 112   1        unsigned char i = 1;
+ 113   1        LCD_Init();
+ 114   1        LCD_ShowString(1,1,"Set passwd");
+ 115   1        LCD_ShowString(2,1,"Old:");
+ 116   1        for(i;i <= passwd_index;i++)
+C51 COMPILER V9.54   LCDSHOW                                                               08/28/2025 19:47:56 PAGE 3   
+
+ 117   1        {
+ 118   2          LCD_ShowChar(2,i+4,'*');
+ 119   2        }
+ 120   1      }
+ 121          
+ 122          /*
+ 123          
+ 124          function name:    LCD_newpasswd_set_show
+ 125          param:        passwd_index
+ 126          retval:       none
+ 127          description:    设置密码时，显示占位的 *
+ 128          updatetime:     2025-08-09  
+ 129          
+ 130          */
+ 131          
+ 132          void LCD_newpasswd_set(unsigned char passwd_index)
+ 133          {
+ 134   1        unsigned char i = 1;
+ 135   1        LCD_Init();
+ 136   1        LCD_ShowString(1,1,"Set passwd");
+ 137   1        LCD_ShowString(2,1,"New:");
+ 138   1        for(i;i <= passwd_index;i++)
+ 139   1        {
+ 140   2          LCD_ShowChar(2,i+4,'*');
+ 141   2        }
+ 142   1      }
+ 143          
+ 144          /*
+ 145          
+ 146          function name:    LCD_newpasswd_again
+ 147          param:        passwd_index
+ 148          retval:       none
+ 149          description:    设置密码时，显示占位的 *
+ 150          updatetime:     2025-08-09  
+ 151          
+ 152          */
+ 153          
+ 154          void LCD_newpasswd_again(unsigned char passwd_index)
+ 155          {
+ 156   1        unsigned char i = 1;
+ 157   1        LCD_Init();
+ 158   1        LCD_ShowString(1,1,"Set passwd");
+ 159   1        LCD_ShowString(2,1,"Again:");
+ 160   1        
+ 161   1        for(i;i <= passwd_index;i++)
+ 162   1        {
+ 163   2          LCD_ShowChar(2,i+6,'*');
+ 164   2        }
+ 165   1      }
+ 166          
+ 167          /*
+ 168          
+ 169          function name:    LCD_set_OK
+ 170          param:        none
+ 171          retval:       none
+ 172          description:    设置密码时，显示占位的 *
+ 173          updatetime:     2025-08-09  
+ 174          
+ 175          */
+ 176          
+ 177          void LCD_set_OK()
+ 178          {
+C51 COMPILER V9.54   LCDSHOW                                                               08/28/2025 19:47:56 PAGE 4   
+
+ 179   1        LCD_Init();
+ 180   1        LCD_ShowString(1,1,"Set passwd");
+ 181   1        LCD_ShowString(2,1,"Successfully set");
+ 182   1      }
+ 183          
+ 184          
+ 185          /*
+ 186          
+ 187          function name:    LCD_locked
+ 188          param:        none
+ 189          retval:       none
+ 190          description:    将密码输入锁住。
+ 191          updatetime:     2025-08-10
+ 192          
+ 193          */
+ 194          
+ 195          void LCD_locked()
+ 196          {
+ 197   1        LCD_Init();
+ 198   1        LCD_ShowString(1,1,"State:");
+ 199   1        LCD_ShowString(2,1,"Locked.");
+ 200   1      }
+ 201          
+ 202          
+ 203          /*
+ 204          
+ 205          function name:    LCD_unlocked
+ 206          param:        none
+ 207          retval:       none
+ 208          description:    解锁密码输入
+ 209          updatetime:     2025-08-10
+ 210          
+ 211          */
+ 212          
+ 213          void LCD_unlocked()
+ 214          {
+ 215   1        LCD_Init();
+ 216   1        LCD_ShowString(1,1,"State:");
+ 217   1        LCD_ShowString(2,1,"Unlocked.");
+ 218   1      }
+ 219          
+ 220          /*
+ 221          
+ 222          function name:    LCD_down
+ 223          param:        none`
+ 224          retval:       none`
+ 225          description:    当密码输入超过八次错误，密码锁锁死，无法进行任何操作。
+ 226          updatetime:     2025-08-10
+ 227          
+ 228          */
+ 229          
+ 230          void LCD_down()
+ 231          {
+ 232   1        LCD_Init();
+ 233   1        LCD_ShowString(1,1,"No chance!");
+ 234   1        LCD_ShowString(2,1,"Try another day.");
+ 235   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    448    ----
+   CONSTANT SIZE    =    194    ----
+C51 COMPILER V9.54   LCDSHOW                                                               08/28/2025 19:47:56 PAGE 5   
+
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       8
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

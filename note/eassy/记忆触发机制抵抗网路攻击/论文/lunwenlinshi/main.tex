@@ -1,0 +1,171 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{ctex}
+\title{lunwenlinshi}
+\author{Q m}
+\date{October 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{单个系统建模}
+In this article, the following nonlinear physical plant described by the T–S fuzzy-model will be considered as follows.\
+
+Plant rule $i$: IF $\varphi_1(t)$ is $G_{i1}$, $\ldots$, and $\varphi_q(t)$ is $G_{iq}$, THEN
+\begin{equation}
+\dot{x}(t) = (A_i + \Delta A_i(t))x(t) + B_i u(t)
+\end{equation}
+for $i \in \mathcal{I} \triangleq \{1, 2, \ldots, r\}$, where $i$ means the $i$th fuzzy rule, $\varphi_j(t)$ and $G_{ij}$ for $i \in \mathcal{I}$, $j \in \{1, 2, \ldots, q\}$ denote the $j$th premise variable and fuzzy set, respectively. $x(t) \in \mathbb{R}^n$ and $u(t) \in \mathbb{R}^{n_u}$ are the state and the control input vector, respectively. $A_i$ and $B_i$ are known matrices with appropriate dimensions. In addition, $\Delta A_i(t) = \alpha(t)A_{0i}$ denotes the random uncertainty of the system. $\alpha(t)$ is a random variable with $\mathbb{E}(\alpha(t)) = \bar{\alpha}$ and $\mathrm{Var}(\alpha(t)) = \hat{\alpha}^2$. $A_{0i}$ is a constant matrix that reflects the nominal uncertainty.\
+
+\textbf{Remark 1:} The parameter uncertainty is often induced by some unknown disturbance in practices. The amplitude of this kind of uncertainty is governed by a random distribution like the one in (1).
+
+Define $\varphi(t) = [\varphi_1(t), \ldots, \varphi_q(t)]$ and $g_i(\varphi(t)) = \Pi_{j=1}^{q} G_{ij}(\varphi_j(t))$, we can obtain the membership function $\mu_i(\varphi(t))$ as
+
+\begin{equation}
+\mu_i(\varphi(t)) = \frac{g_i(\varphi(t))}{\sum_{i=1}^{r} g_i(\varphi(t))}. 
+\end{equation}
+
+It is known that $0 \leq \mu_i(\varphi(t)) \leq 1$ and $\sum_{i=1}^{r} \mu_i(\varphi(t)) = 1$.
+
+With the aid of center-average defuzzifier, product interference, and singleton fuzzifier, the whole T--S fuzzy systems can be written by
+
+\begin{equation}
+\dot{x}(t) = \sum_{i=1}^{r} \mu_i(\varphi(t))[(A_i + \alpha(t)A_{0i})x(t) + B_i u(t)]. 
+\end{equation}
+
+
+Suppose the control signal is transmitted over the communication network at instant $t_k$, and $\{t_k\}_{k=0}^{\infty}$ is a monotone increasing sequence. Then, the T--S fuzzy-based feedback control law of the $j$th ($j \in \mathcal{I}$) rule can be expressed by
+
+\text{Control rule $j$: IF $\varphi_1(t_k)$ is $G_{i1}$, $\ldots$, and $\varphi_q(t_k)$ is $G_{iq}$, THEN}
+
+\begin{equation}
+\bar{u}(t) = K_j x(t_k)
+\end{equation}
+
+for $t \in [t_k, t_{k+1})$, where $K_j$ is the controller gain to be designed. Using a similar method, we can get the overall fuzzy controller as
+
+\begin{equation}
+\bar{u}(t) = \sum_{j=1}^{r} \mu_j(\varphi(t_k)) K_j x(t_k). 
+\end{equation}
+
+Similar to [26], we assume the membership function has the following property:
+
+\begin{equation}
+\mu_j(\varphi(t_k)) > \rho_j \mu_j(\varphi(t))
+\end{equation}
+
+for $t \in [t_k, t_{k+1})$, where $\rho_j > 0$ is a known constant.
+
+The control signal is vulnerable to tampering by malicious adversaries when it transmits over a communication network. In this study, we suppose the adversaries inject false data into the control information with the following form:
+
+\begin{equation}
+u(t) = \bar{u}(t) + \bar{u}_a(t)
+\end{equation}
+
+where $\bar{u}_a(t) = \beta(t) u_a(t)$ and $\beta(t) \in \{0, 1\}$ are a random variable with $\mathbb{E}\{\beta(t) = 1\} = \bar{\beta}$, $u_a(t)$ is the attack signal that satisfies
+\begin{equation}
+\|u_a(t)\| \leq \varrho^2
+\end{equation}
+
+where $\varrho > 0$ is a predefined constant.
+
+\textbf{Remark 2:} For the purpose of evading detection, the adversaries usually launch the attack intermittently, here $\beta(t)$ taking ``1'' means a successful attack at instant $t$. Besides, the magnitude of the attack is constrained as well.
+
+Combining (3) and (7), we can obtain the closed-loop control system for $t \in [t_k, t_{k+1})$ as follows:
+
+\begin{equation}
+\begin{aligned}
+\dot{x}(t) &= \sum_{i=1}^{r} \sum_{j=1}^{r} \mu_i(\varphi(t)) \mu_j(\varphi(t_k)) 
+\left[ (A_i + \alpha(t)A_{0i})x(t) \right. \\
+& + B_i K_j x(t_k) + \beta(t) B_i u_a(t_k) \right].
+\end{aligned}
+\end{equation}
+
+\section{引入多层网络}
+上面考虑的是单个系统的动态方程，下面我们讨论多个系统互联的复杂网络模型的动态方程。设想有N个系统耦合连接，如下图：
+
+
+根据tarjan算法将其分为多个强连通分量，按照以下规则进行分层，其中节点D在第k层的要求：
+1、指向节点D的一个节点在k-1层。
+2、任意指向节点D的节点只能存在于k-1及以下层。
+根据规则我们得到了分层图，如下所示：
+
+
+由于层与层之间是单连通的，第一层不受别的层的影响，所以我们先只考虑第一层。
+设第一层有N1个节点，每个节点之间相互影响，我们设定$r_{pq}$作为节点$p$对节点q的耦合系数，代表节点p的状态对节点q状态的影响程度,因此我们将式子。。改写为：
+\begin{equation}
+\begin{aligned}
+\dot{x}_q(t) &= \sum_{i=1}^{r} \sum_{j=1}^{r} \mu_i(\varphi(t)) \mu_j(\varphi(t_k)) 
+\left[ (A_i + \alpha(t)A_{0i})x_q(t) \right. \\
+& +\sum_{n=1}^{N1}r_{nq}x_{n}(t)+ B_i K_j x(t_k) + \beta(t) B_i u_a(t_k) \right].\\
+&=\sum_{i=1}^{r} \sum_{j=1}^{r} \sum_{n=1}^{N1}\mu_i(\varphi(t)) \mu_j(\varphi(t_k)) 
+\left[ (A_i + \alpha(t)A_{0i})x_q(t) \right.\\
+&+r_{nq}x_{n}(t)+ B_i K_j x(t_k) + \beta(t) B_i u_a(t_k) \right].
+\end{aligned}
+\end{equation}
+其中$r_{pq}$为矩阵。。
+
+对于节点q，将判定条件改写为
+\begin{equation}
+\psi_{q}(t) = e_{q}^{T}(t) \Theta e_{q}(t) - \varpi x_{q}^{T}(t_k) \Theta x_{q}(t_k)
+\end{equation}
+
+
+
+将ETMs改写为
+\begin{equation}
+\tilde{x}_{q}(t) \triangleq \int_{t-h_2}^{t} F_{q}(s - t)x(s)ds.
+\end{equation}
+所以新的误差状态关于ETMs改写为
+\begin{equation}
+e_{q}(t) = H\tilde{x}_{q}(t) - x_{q}(t_k)
+\end{equation}
+
+定义$\Psi_{q}(t)=\begin{cases}
+  0&  \psi_{q}(t)< 0 \\
+  1&  \psi_{q}(t)> 0
+\end{cases}$,$N_{c}(t)=\sum\Psi_{q}(t)\\
+
+The next releasing event is designed by
+
+\begin{equation}
+t_{k+1} = \inf\{t > t_k + h_1 \mid N_{c}(t) > \nu\}.
+\end{equation}
+其中$\nu$为待设计的正整数
+
+Defining $d(t) = t - t_k$ for $t \in \mathcal{I}_1$ follows that
+\begin{equation}
+x_q(t_k) = 
+\begin{cases}
+x_q(t - d(t)) & t \in \mathcal{I}_1 \\
+H\tilde{x}_q(t) - e_q(t) & t \in \mathcal{I}_2.
+\end{cases}
+\end{equation}
+
+Then, it has
+\begin{equation}
+0 \leq d(t) \leq h_1.
+\end{equation}
+
+Therefore, system (9) can be converted into a switched system with two modes as follows:
+\begin{equation}
+\dot{x}_q(t) = \sum_{i=1}^{r} \sum_{j=1}^{r}\sum^{N1}_{n=1} \mu_i(\varphi(t))\mu_j(\varphi(t_k))[\vartheta_{ijq\sigma(t)}(t) + \pi_{ijq}(t)]
+\end{equation}
+for $t \in [t_k, t_{k+1}) = \mathcal{I}_1 \cup \mathcal{I}_2$, where
+\begin{equation}
+\sigma(t) = 
+\begin{cases}
+1 & t \in \mathcal{I}_1 \\
+2 & t \in \mathcal{I}_2
+\end{cases}
+\end{equation}
+and
+\begin{align*}
+\vartheta_{ijq1}(t) &= (A_i + \bar{\alpha}A_{0i})x_q(t) + B_iK_{1j}x_q(t - d(t)) + \bar{\beta}B_iu_a(t_k) \\
+\vartheta_{ijq2}(t) &= (A_i + \bar{\alpha}A_{0i})x_q(t) + B_iK_{2j}H\tilde{x}_q(t) - B_iK_{2j}e_q(t) + \bar{\beta}B_iu_a(t_k) \\
+\pi_{ijq}(t) &= (\alpha(t) - \bar{\alpha})A_{0i}x_q(t) + (\beta(t) - \bar{\beta})B_iu_a(t_k)+r_{nq}x_{n}(t).
+\end{align*}
+\end{document}

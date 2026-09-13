@@ -1,0 +1,221 @@
+{
+  "main": {
+    "id": "6fcb135b39c56ddb",
+    "type": "split",
+    "children": [
+      {
+        "id": "3944f8978707df34",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4ae2b8fd0aa05896",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "basic/1-intro.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "1-intro"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "108fcc160c75c527",
+    "type": "split",
+    "children": [
+      {
+        "id": "5e18c31227a6aa2b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6d6882109f8af06a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "f4ccc09144eea5aa",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "7b311b993b289d19",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 392.5
+  },
+  "right": {
+    "id": "1f3a9532fe4ac83e",
+    "type": "split",
+    "children": [
+      {
+        "id": "8692602a4c9e898e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "aa403a00f2bb6043",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "反向链接"
+            }
+          },
+          {
+            "id": "e52cedcde41de061",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "basic/4-data model(basic).md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "4-data model(basic) 的出链列表"
+            }
+          },
+          {
+            "id": "147be60e146bc9e0",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-ghost",
+              "title": "tag"
+            }
+          },
+          {
+            "id": "0cb85eb61b6b043b",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-ghost",
+              "title": "all-properties"
+            }
+          },
+          {
+            "id": "fb300f129971133a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "basic/1-intro.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "1-intro 的大纲"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 255.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:新建数据库": false
+    }
+  },
+  "active": "4ae2b8fd0aa05896",
+  "lastOpenFiles": [
+    "basic/picture/on_windows_download.png",
+    "basic/picture/on_downloads.png",
+    "basic/未命名.md",
+    "basic/1-intro.md",
+    "basic/picture/get_python_org.png",
+    "other/Python 包.md",
+    "other/json 文件.md",
+    "other/异常.md",
+    "other/文件操作.md",
+    "other/随机数.md",
+    "other/模块导入.md",
+    "other/类.md",
+    "other/闭包.md",
+    "basic/3-lexical analysis.md",
+    "basic/4-data model(basic).md",
+    "basic/2-code style.md",
+    "basic/picture/add_vironment_varialbe.png",
+    "basic/picture/compare_is_output.png",
+    "basic/picture/verify_notimplemented_1_output.png",
+    "basic/picture/verify_NotImplemented_1_output.png",
+    "basic/code/4/verify_notimplemented_1.py~",
+    "basic/code/4/verify_notimplemented_1.py",
+    "basic/picture/verify_ellipsis_output.png",
+    "basic/code/4/check_type_id_ellipsis.py",
+    "basic/picture/check_type_id_output.png",
+    "basic/code/4/verify_ellipsis.py~",
+    "basic/code/4/verify_ellipsis.py",
+    "basic/picture/check_type_ellipsis_output.png",
+    "basic/picture/check_type_ellipsis.png",
+    "basic/code/4/check_type_ellipsis.py",
+    "basic/code/4/try_notimplemented.py",
+    "basic/code/4/verify_notimplemented.py",
+    "basic/code/4/check_type_notimplemented.py",
+    "basic/code/4/try_none.py",
+    "basic/data type.md"
+  ]
+}

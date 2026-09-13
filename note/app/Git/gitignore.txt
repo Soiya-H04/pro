@@ -1,0 +1,28 @@
+文件名为 .gitignore
+
+注释
+#		忽略内容
+
+通配符
+*		任意零个或多个字符
+?		任意一个字符
+[]		内部一个字符
+/**/ 	任意中间目录
+!		取反
+/		当前目录
+
+# 忽略所有 .a 
+*.a
+# 跟踪 lib.a
+! lib.a
+# 忽略当前目录下文件 TODO
+/TODO
+# 忽略目录下任何为 build 的文件夹
+build/
+# 忽略当前目录下 doc/notes.txt
+doc/notes.txt
+# 忽略 doc/ 目录及其自目录下的 .pdf  文件
+doc/**/*.pdf
+
+模板参考
+https://github.com/github/gitignore

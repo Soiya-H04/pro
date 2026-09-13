@@ -1,0 +1,56 @@
+/* 一层 */
+.one {
+    width: 1215px;
+    height: 460px;
+    margin: auto auto;
+}
+
+/* 二层 */
+.two {
+    float: left;
+    width: 350px;
+    height: 390px;
+}
+/* 二层 多图 */
+.double {
+
+    margin: 30px;
+}
+
+/* 二层 单图 */
+.single {
+    margin: 30px 20px;
+}
+
+/* 三层 */
+.three {
+    width: 350px;
+    height: 190px;
+}
+
+/* 三层 上 */
+.up {
+    margin-bottom: 10px;
+}
+/* 三层 下 */
+.down {
+    margin-top: 10px;
+}
+
+/* 四层 */
+.four {
+    float: left;
+    width: 170px;
+    height: 190px;
+    
+}
+
+/* 四层 左 */
+.left {
+    margin-right: 5px;
+}
+
+/* 四层 右 */
+.right {
+    margin-left: 5px;
+}

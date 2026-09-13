@@ -1,0 +1,120 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        08/08/2025  04:17:04  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\DOWNLOAD\KEIL UVISION5\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\ShowDigit.obj TO .\Objects\project PRINT (.\Lis
+>> tings\project.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  .\Objects\ShowDigit.obj (SHOWDIGIT)
+  D:\DOWNLOAD\KEIL UVISION5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\project (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     00D2H     UNIT         ?PR?_SHOWDIGIT?SHOWDIGIT
+            CODE    00D5H     000CH     UNIT         ?C_C51STARTUP
+            CODE    00E1H     0009H     UNIT         ?PR?MAIN?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\project (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN
+  +--> ?PR?_SHOWDIGIT?SHOWDIGIT
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\project (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:00E1H         PUBLIC        main
+  -------         PROC          MAIN
+  C:00E1H         LINE#         16
+  C:00E1H         LINE#         17
+  C:00E1H         LINE#         18
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/08/2025  04:17:04  PAGE 2
+
+
+  C:00E8H         LINE#         19
+  C:00E8H         LINE#         20
+  C:00E8H         LINE#         22
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        SHOWDIGIT
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  B:00A0H.2       PUBLIC        P2_2
+  B:00A0H.3       PUBLIC        P2_3
+  B:00A0H.4       PUBLIC        P2_4
+  C:0003H         PUBLIC        _showdigit
+  -------         PROC          _SHOWDIGIT
+  D:0007H         SYMBOL        locate
+  D:0005H         SYMBOL        num
+  C:0003H         LINE#         14
+  C:0003H         LINE#         15
+  C:0003H         LINE#         16
+  C:0015H         LINE#         17
+  C:0015H         LINE#         18
+  C:0027H         LINE#         19
+  C:0027H         LINE#         20
+  C:0054H         LINE#         21
+  C:0054H         LINE#         22
+  C:0058H         LINE#         23
+  C:005CH         LINE#         24
+  C:0060H         LINE#         25
+  C:0064H         LINE#         26
+  C:006CH         LINE#         27
+  C:0074H         LINE#         28
+  C:007CH         LINE#         29
+  C:0082H         LINE#         30
+  C:0082H         LINE#         31
+  C:0082H         LINE#         32
+  C:00ADH         LINE#         33
+  C:00ADH         LINE#         34
+  C:00B1H         LINE#         35
+  C:00B5H         LINE#         36
+  C:00B9H         LINE#         37
+  C:00BDH         LINE#         38
+  C:00C1H         LINE#         39
+  C:00C5H         LINE#         40
+  C:00C9H         LINE#         41
+  C:00CDH         LINE#         42
+  C:00D1H         LINE#         43
+  C:00D4H         LINE#         44
+  C:00D4H         LINE#         45
+  C:00D4H         LINE#         46
+  C:00D4H         LINE#         47
+  C:00D4H         LINE#         48
+  -------         ENDPROC       _SHOWDIGIT
+  -------         ENDMOD        SHOWDIGIT
+
+Program Size: data=9.0 xdata=0 code=234
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

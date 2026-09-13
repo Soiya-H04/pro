@@ -1,0 +1,62 @@
+C51 COMPILER V9.54   MAIN                                                                  08/08/2025 02:09:46 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Download\Keil uVision5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(
+                    -.\Listings\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          /*
+   2          
+   3          name:   LED 流水线亮
+   4          param:    无
+   5          retval:   无
+   6          ref:    REGX52.H
+   7          use to:   每次亮两个，由 D1 与 D4 开始向右移动，每 500 ms 移动一次。
+   8          updatetime: 2025-08-08
+   9          
+  10          */
+  11          
+  12          #include <REGX52.H>
+  13          #include "Delay.h"
+  14          
+  15          void main()
+  16          {
+  17   1        // 先初始化 LED
+  18   1        P2 = 0xFF;
+  19   1        P2_0 = 0;
+  20   1        P2_3 = 0;
+  21   1        while(1)
+  22   1        {
+  23   2          // 由于右移不会将 1 移动到左边，所以要加判断。
+  24   2          if(1 == P2_7)
+  25   2          {
+  26   3            Delay(500);
+  27   3            // D8 << D1
+  28   3            // P2 << 1
+  29   3            P2 = P2 << 1;
+  30   3            P2_0 = 1;
+  31   3          }
+  32   2          else
+  33   2          {
+  34   3            Delay(500);
+  35   3            P2 = P2 << 1;
+  36   3          }
+  37   2        }
+  38   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     42    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

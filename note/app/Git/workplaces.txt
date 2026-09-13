@@ -1,0 +1,9 @@
+状态：
+untracked
+未追踪
+unmodified
+未修改
+modified
+已修改
+staged
+暂存

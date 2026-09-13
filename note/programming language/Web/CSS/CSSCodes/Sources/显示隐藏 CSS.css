@@ -1,0 +1,49 @@
+.box {
+    width: 200px;
+    height: 300px;
+    background-color: red;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.smallbox {
+    width: 200px;
+    height: 30px;
+    background-color: pink;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.display {
+    display: block;
+    background-color: green;
+}
+
+.nodisplay {
+    display: none;
+}
+
+.visibility {
+    visibility: visible;
+    background-color: yellow;
+}
+
+.novisibility {
+    visibility: hidden;
+}
+
+.overflowv {
+    overflow: visible;
+}
+
+.overflows {
+    overflow: scroll;
+}
+
+.overflowh {
+    overflow: hidden;
+}
+
+.overflowa {
+    overflow: auto;
+}

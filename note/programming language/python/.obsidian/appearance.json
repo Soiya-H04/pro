@@ -1,0 +1,10 @@
+{
+  "theme": "system",
+  "accentColor": "#dbd6e6",
+  "baseFontSize": 21,
+  "baseFontSizeAction": true,
+  "showViewHeader": true,
+  "showRibbon": false,
+  "monospaceFontFamily": "Alegreya 常规",
+  "textFontFamily": "Cascadia Code,华文中宋"
+}

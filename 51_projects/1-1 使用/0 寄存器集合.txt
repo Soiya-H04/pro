@@ -1,0 +1,65 @@
+常用寄存器集合（Common Register Set）
+
+
+PCON（Power Control Register，不可位寻址）
+B7		B6		B5		B4		B3		B2		B1		B0
+SMOD	SMOD0	-		POF	GF1	GF0	PD		IDL
+
+
+ISP_CONTR（Internet Service Provider Control）
+B7		B6		B5		B4		B3		B2		B1		B0
+ISPEN	SWBS	SWRST	-		-		WT2	WT1	WT0
+
+
+WDT_CONTR（Watch Dog Timer Control）
+B7		B6		B5			B4			B3			B2		B1		B0
+-		-		EN_WDT	CLR_WDT	IDLE_WDT	PS2		PS1		PS0
+IE（Interrupt Enable）
+B7		B6		B5		B4		B3		B2		B1		B0
+EA		-		ET2		ES		ET1		EX1	ET0		EX0
+
+
+XICON（Auxiliary Interrupt Control）
+B7		B6		B5		B4		B3		B2		B1		B0
+PX3		EX3	IE3		IT3		PX2		EX2	IE2		IT2
+
+
+IPH（Interrupt Priority High，不可位寻址）
+B7		B6		B5		B4		B3		B2		B1		B0
+-		-		PT2		PSH	PT1H	PX1H	PT0H	PX0H
+
+
+IP（Interrupt Priority）
+B7		B6		B5		B4		B3		B2		B1		B0
+PX3		PX2		PT2		PS		PT1		PX1		PT0		PX0
+
+
+SCON（Serial Control）
+B7			B6		B5		B4		B3		B2		B1		B0
+SM0/FE		SM1		SM2		REN	TB8		RB8		TI		RI
+
+
+TCON（Timer Control）
+B7		B6		B5		B4		B3		B2		B1		B0
+TF1		TR1		TF0		TR0		IE1		IT1		IE0		IT0
+
+
+TMOD（Timer Mode，不可位寻址）
+T1								T0
+B7		B6		B5		B4		B3		B2		B1		B0
+GATE	C/T		M1		M0		GATE	C/T		M1		M0
+
+
+P1（Pin 1）
+B7		B6		B5		B4		B3		B2		B1		B0
+P1_7	P1_6	P1_5	P1_4	P1_3	P1_2	P1_1	P1_0
+
+
+P2（Pin 2）
+B7		B6		B5		B4		B3		B2		B1		B0
+P2_7	P2_6	P2_5	P2_4	P2_3	P2_2	P2_1	P2_0
+
+
+P3（Pin 3）
+B7		B6		B5		B4		B3		B2		B1		B0
+P3_7	P3_6	P3_5	P3_4	P3_3	P3_2	P3_1	P3_0

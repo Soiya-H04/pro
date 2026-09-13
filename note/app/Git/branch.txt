@@ -1,0 +1,72 @@
+简单创建：
+git branch <branch_name>
+创建 branch_name 分支
+
+
+查看：
+git branch
+所有分支
+git branch --all
+所有分支（包括远程分支）
+git branch -v
+所有分支及最近提交
+git branch -vv
+所有分支（包括远程分支）及最近提交
+git log --oneline --graph --all --decorate
+单行提交历史、分支指向、分支分向情况
+git branch --merged
+已合并到当前分支的分支
+git branch --no-merged
+还未合并到当前分支的分支
+
+
+切换：
+git checkout <branch_name>
+切换 branch_name 分支
+git checkout -b <branch_name>
+创建并切换到 branch_name 分支
+
+
+合并：
+git merge <branch_name>
+合并 branch_name 到当前分支
+
+
+删除：
+git branch -d <branch_name>
+已合并分支 <branch_name>
+git branch -D <branch_name>
+合并或未合并分支 <branch_name>
+
+
+远程分支：
+<remote>/<branch>
+格式（不可修改，用于更新）
+git checkout -b <branch_name> <remote>/<branch>
+创建跟踪分支（可修改）
+git  checkout --track <remote>/<branch>
+自动创建远程分支同名跟踪分支
+git push --set-upstream <remote> <remote_branch>
+推送并设置上游分支（没有就创建）
+git branch --set-upstream-to <remote>/<branch>
+为当前分支设置上游分支
+git push <remote> <local_branch>:<remote_branch>
+推送本地分支到远程分支
+git push <remote> <branch_name>
+推送本地分支到远程同名分支
+git push
+推送到同名上游分支
+git push <remote> --delete <remote_branch>
+删除远程分支
+
+变基：
+git rebase <branch_name>
+将 branch_name 的修改在当前分支按序重放后，归为 branch_name 的提交
+git rebase --onto <branch1> <branch2> <branch3>
+将 branch1 的修改在基于 branch2 的 branch3 按序重放后，归为 branch1 的提交
+git rebase --continue
+遇到冲突后解决冲突继续变基
+git rebase --skip
+遇到冲突后跳过该冲突继续变基
+git rebase --abort
+遇到冲突放弃变基

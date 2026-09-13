@@ -1,0 +1,10 @@
+{
+  "markdown:clear-metadata-properties": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "'"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "readableLineLength": false,
+  "strictLineBreaks": false,
+  "propertiesInDocument": "hidden",
+  "foldHeading": false,
+  "foldIndent": false,
+  "showLineNumber": true,
+  "showIndentGuide": true,
+  "rightToLeft": false,
+  "smartIndentList": true,
+  "tabSize": 2,
+  "vimMode": false,
+  "newFileLocation": "current",
+  "showUnsupportedFiles": true,
+  "attachmentFolderPath": "basic/picture",
+  "showInlineTitle": false,
+  "livePreview": true,
+  "openBehavior": "",
+  "alwaysUpdateLinks": true
+}
