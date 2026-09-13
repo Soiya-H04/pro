@@ -1,0 +1,16 @@
+{
+	"config_name": "config.json",
+	"version": "v1.0.0",
+	"encoding": "utf-8",
+	"cli_path":"D:/Download/N_m3u8DL-CLI/N_m3u8DL-CLI_v3.0.2.exe",
+	"video_url_path":"video_urls.txt",
+	"crawled_video_url_path":"crawled_video_urls.txt",
+	"default_save_dir":"D:/A_StudyNote/Planguage/Python/projects/spider/jable-tv-video/videos",
+	"retry_count":0,
+	"max_concurrent":5,
+	"headers":{
+		"User-Agen":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:147.0) Gecko/20100101 Firefox/147.0",
+		"Referer":"https://jable.tv/"
+	},
+	"video_extensions":[".mp4", ".mkv", ".avi", ".mov",".wmv", ".flv", ".ts", ".m3u8"]
+}

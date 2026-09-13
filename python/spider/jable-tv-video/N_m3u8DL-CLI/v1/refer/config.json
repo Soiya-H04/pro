@@ -1,0 +1,39 @@
+{
+    "base": {
+        "name": "m3u8_downloader",
+        "version": "v1",
+        "encoding": "utf-8"
+    },
+    "path": {
+        "pro_folder_path": "D:\\A_StudyNote\\Planguage\\Python\\projects\\spider\\jable-tv-video\\N_m3u8DL-CLI\\v1",
+        "py_folder_path": "D:\\A_StudyNote\\Planguage\\Python\\projects\\spider\\jable-tv-video\\N_m3u8DL-CLI\\v1\\py",
+        "refer_folder_path": "D:\\A_StudyNote\\Planguage\\Python\\projects\\spider\\jable-tv-video\\N_m3u8DL-CLI\\v1\\refer",
+        "video_path": "D:\\A_StudyNote\\Planguage\\Python\\projects\\spider\\jable-tv-video\\N_m3u8DL-CLI\\v1\\refer\\video.json",
+        "config_path": "D:\\A_StudyNote\\Planguage\\Python\\projects\\spider\\jable-tv-video\\N_m3u8DL-CLI\\v1\\refer\\config.json",
+        "new_video_path": "D:\\A_StudyNote\\Planguage\\Python\\projects\\spider\\jable-tv-video\\N_m3u8DL-CLI\\v1\\refer\\new_video.txt",
+        "save_folder_path": "D:\\A_StudyNote\\Planguage\\Python\\projects\\spider\\jable-tv-video\\N_m3u8DL-CLI\\v1\\video"
+    },
+    "download": {
+        "cli_path": "D:/Download/N_m3u8DL-CLI/N_m3u8DL-CLI_v3.0.2.exe",
+        "retry_count": 3,
+        "max_concurrent": 3,
+        "maxThreads": 32,
+        "minThreads": 16,
+        "timeOut": 30,
+        "afterDownload": "enableDelAfterDone",
+        "headers": {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:147.0) Gecko/20100101 Firefox/147.0",
+            "Referer": "https://jable.tv/"
+        },
+        "video_extensions": [
+            ".mp4",
+            ".mkv",
+            ".avi",
+            ".mov",
+            ".wmv",
+            ".flv",
+            ".ts",
+            ".m3u8"
+        ]
+    }
+}

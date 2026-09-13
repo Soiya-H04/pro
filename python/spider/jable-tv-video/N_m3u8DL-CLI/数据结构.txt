@@ -1,0 +1,15 @@
+{
+"urls":
+[  
+	"crawled_video_urls":
+					[title, web_url, m3u8_url],[title, web_url, m3u8_url]
+	"video_urls":
+					[title, web_url, m3u8_url],[title, web_url, m3u8_url]
+]
+}
+
+
+视频信息：
+标题
+网页 url
+m3u8 url
